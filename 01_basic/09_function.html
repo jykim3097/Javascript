@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // 함수의 호이스팅(선언부가 아래쪽이 있더라도 미리 호출이 가능)
+        method1();
+        document.write("<br>");
+        
+        method2(1,1);
+        document.write("<br>");
+
+        //함수의 매개변수 갯수가 달라도 호출이 들어간다..!
+        method2(1); //NaN
+        document.write("<br>");
+
+        method2(1,2,3);
+        document.write("<br>");
+
+        var r = method3(10,20);
+        document.write(r);
+        document.write("<br>");
+
+        var c = method3;
+        var d = c(11,22);
+        document.write(d);
+
+        //매개변수
+        function method1() {
+            document.write(1);
+        }
+
+        function method2(a,b) {
+            document.write(a+b);
+        }
+
+        //리턴
+        function method3(a, b) {
+            document.write("method3번 호출 <br>");
+            var result = a + b;
+
+            return result;
+        }
+
+    </script>
+
+</body>
+</html>

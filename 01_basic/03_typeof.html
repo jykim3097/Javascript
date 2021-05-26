@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script type="text/javascript">
+        
+        /*
+        a룰 10으로 초기화해서 선언했다가 30을 대입한 것으로 보이지만
+        내부적으로는 새로 선언한 것이다. 
+        */
+
+        var a = 10;
+        var b = 20;
+        a = 30;
+        
+        var result = a + b;
+        console.log(result)
+
+        var x = '20';
+        var y = 20;
+
+        // 문자가 가장 강한 타입이다
+        console.log(x + y); //문자 + 숫자 = 문자
+        console.log(20 + y); //숫자 + 숫자 = 숫자
+        console.log('10' + x); //문자 + 문자 = 문자
+
+        /* 데이터 타입 number, string, boolean, undifined, null */
+        var num1 = 3.14;
+        var num2 = 3;
+
+        // 암묵적으로 갖고 있는 타입을 확인할 수 있다
+        console.log(typeof(num1));
+        console.log(typeof(num2));
+
+        var str1 = "문자";
+        var str2 = "네 통장어"
+        console.log(typeof(str1+str2));
+
+        // 0 : false, 0을 제외한 나머지 : true
+        var bool = true;
+        console.log(typeof(bool));
+
+        // 변수를 선언했지만 초기화하지 않았을 때! null이랑은 다르다!!
+        var un;
+        console.log(typeof(un))
+        console.log(un);
+
+        // null은 값은 저장했지만 존재하지 않을 때
+        var tag = document.getElementById("xxx");
+        console.log(tag);
+        console.log(typeof tag); //object
+
+        // NaN : Not a Number
+        // infinit
+
+    </script>
+
+</body>
+</html>

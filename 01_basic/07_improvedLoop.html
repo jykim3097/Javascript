@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var arr = ['hong', 'park', 'kim', 1, 2, 3, 4];
+
+        //주의 - 배열이나 객체의 index나 key 값을 변수에 저장한다.
+        for(var i in arr){
+            document.write(arr[i]+"<br>");
+        }
+
+        //js에서 객체의 선언은 {중괄호}를 이용
+        var p = {name : '홍길동', age : 20};
+        
+        //주의 - 객체형식에서는 키를 변수에 저장한다
+        for(var i in p) {
+            document.write(i+":"+p[i]+"<br>"); //key를 뽑아준다
+        }
+
+    </script>
+
+</body>
+</html>
