@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //함수를 이용한 객체 선언
+        function Person(name) {
+            this.name = name;
+            this.info = function() {
+                return "이름:" + name;
+            }
+        }
+
+        var p = new Person("홍길자");
+        console.log(p.name);
+        console.log(p.info());
+
+        var p2 = new Person("이순신");
+        console.log(p2.info());
+
+    </script>
+
+</body>
+</html>

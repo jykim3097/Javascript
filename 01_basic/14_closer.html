@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // function func1() {
+        //     var a = 1;
+
+        //     //함수 안에 함수를 무한히 만들 수 있다.
+        //     function func2() {
+        //         function func3() {
+        //             //....
+        //         }
+        //     }
+
+        // } //a의 범위는 여기서 끝 (함수 스코프)
+
+        // console.log(a); //에러
+
+        function m() {
+            var a = "private";
+
+            return a;
+        }
+
+        var b = function() {
+            return m();
+        }
+
+        console.log(m());
+        console.log(b());
+
+
+
+        //함수 안에 변수를 밖에서 사용하려면
+        function method() {
+            var a = "안녕";
+
+            // var result = function() {
+            //     console.log(a);
+            // }
+
+            //js 함수는 실행 환경의 상태를 기억한다.
+            return function(){
+                return a;
+            };
+        }
+
+        //클로저 - 내부 익명 함수가 외부 함수 method()의 값에 접근할 수 있는 key를 갖고 있다.
+        //클로저를 통해 private 변수를 생성할 수 있고, set, get 메서드를 만들 수 있다.
+
+        var b = method(); //method가 끝나는 시점에 a는 사라짐
+        console.log("b: "+b);
+        console.log("b(): "+b());
+
+        //클로저 함수를 이용해 getter, setter 메서드 활용
+        function test() {
+            var _name = "private 변수"; //_는 private 변수로 사용한다는 걸 의미
+            console.log(_name);
+
+            return function(name) {
+                _name = name;
+                return _name;
+            }
+        }
+
+        var setter = test();
+        console.log(setter('이순신')); //리턴의 결과 자체는 함수이고 외부에서 값을 전달
+    </script>
+
+</body>
+</html>

@@ -140,3 +140,161 @@ for(var i in arr) {...} //향상된 for문
 * return이 없는 함수는 자동으로 undifined 타입이 된다
     
 * 함수의 호이스팅이 가능하다
+	* 호이스팅이란? 코드를 아래에서 작성하고 위에서 호출하는 것
+
+21.05.26    
+### 익명 함수
+* _변수에 함수 데이터를 저장해_ 변수를 마치 함수처럼 사용하도록 만들어준다.
+* 호출은 변수 선언 이후에 해야 한다 = 호이스팅이 안된다.
+
+```javascript
+var a = function() {
+	console.log("a");
+}
+a();
+```
+
+* 화살표 함수(람다식)를 사용할 수 있다 **(ES6 문법)**
+	* 단일 명령문일 경우 {}를 생략할 수 있다.
+```javascript
+var a = function() {
+	console.log("익명함수");
+}
+
+var a_arrow = () => console.log("익명 함수 람다식");
+```
+
+### 가변 인자
+* 매개변수를 2개 받는 메서드에 매개변수를 2개 이상 넘겨도 문제가 발생하지 않는다.
+* 더 많은 매개변수를 보내도 매개변수는 다 받아오면서 메서드를 실행한다.
+* 즉, js에서 매개변수는 큰 의미가 없고, 단순히 인자로 들어오는 값에 이름을 붙여 사용하는 것이다.
+* 이렇게 메서드에 전달되는 매개변수는 arguments 객체에서 확인할 수 있다.
+
+### 즉시 실행 함수
+* 익명함수 형태로 만들고, 이 익명함수를 큰 소괄호를 감싸고, 호출 구문 **();**을 붙인다
+* 사용 이유?
+	* _페이지 시작 시_ 호출할 함수를 기술한다
+```javascript
+function func1() {
+	console.log("1번");
+	return "1번";
+}
+
+function func2() {
+	console.log("2번");
+}
+
+//즉시 실행 함수
+(function() {
+	var result = func1();
+	func2(result);
+})();
+```
+
+### var와 let
+* var : **함수 level scope**
+	* 변수의 중복 선언이 가능하다
+	* **함수 블록 내부에만** 지역 변수가 존재한다
+* let : **block level scope**
+	* 같은 블록에서는 변수의 중복 선언이 안된다
+* var 변수와 let 변수는 같이 쓰지 않는다
+* ES5 문법을 사용할 때는 var 변수를 쓰고, ES6 문법을 사용할 때는 let 변수를 사용한다.
+
+### closer 함수
+* var는 함수 블록 변수이기 때문에 함수 내부에서 생성된 변수는 함수 외부에서 사용할 수 없다
+* 이 변수를 함수 밖에서 사용하기 위해 처리하는 방법이 closer 이다.
+```javascript
+// 값만 내보내기
+function method() {
+	var a = "private 변수"
+
+	return function() {
+		return a;
+	}
+}
+
+var b = method(); 
+// b에 function()이 담긴다
+// b = function() {
+// 	return a;
+// }
+
+console.log(b()); // a 출력
+
+
+// 값 바꾸기
+function test() {
+	var _name = "private"; // private 변수 앞에는 '_'를 붙인다
+
+	return function(name) {
+		_name = name;
+		return _name;
+	}
+}
+
+var setter = test();
+// setter에 담긴 function(name)
+// function(name) {
+// 	_name = name;
+// 	return _name;
+// }
+
+console.log(setter("홍길동"));
+```
+* js에는 접근 제어자가 없어서 외부에서 접근하지 못하도록 할 때 사용한다. (private 변수)
+* closer를 통해 getter, setter 메서드를 작성할 수 있다.
+
+
+## 객체(JSON)
+* JSON : JavaScript Object Notation
+* {키:값, 키:값, ...}로 표기, 함수로도 표기할 수 있다.
+```javascript
+var person = {namd:"홍길동", age:20, arr:[1,2,3,4]};
+
+// 객체 표현 방법1
+person.name;
+person.arr[0]
+
+//객체 표현 방법2
+person["name"];
+person["arr"][0]
+```
+
+
+### 함수를 이용한 객체 선언
+```javascript
+function Person(name) {
+	this.name = name;
+	this.info = function() {
+		return "이름: " + name;
+	}
+}
+
+var p = new Person("홍길동");
+var p2 = new Person("이순신");
+
+console.log(p.info());
+console.log(p2.info());
+```
+
+### JSON 파싱
+* JSON을 모르는 네트워크와 통신하려면 객체(JSON)를 문자열로 파싱해야한다.
+* 그리고 이 값을 다시 사용하려면 object로 변경해줘야 한다.
+```javascript
+var data = [
+	{id:'kkk123', title:'java'},
+	{id:'aaa123', title:'jsp'},
+	{id:'bbb123', title:'js'}
+]
+
+// 객체 배열을 문자열로 바꿈
+var result = JSON.stringify(data);
+
+//문자열을 객체 배열로 바꿈
+var result2 = JSON.parse(result);
+```
+
+#### 문자열을 직접 JSON 형식으로 변경할 때는 키와 값 모두를 string 처리 해야 한다!!
+```javascript
+var result3 = JSON.parse('[{"키":"aaa123"}]');
+```

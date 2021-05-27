@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //제이슨 파싱 - 나중에 원격에 있는 어떤 데이터를 읽어올 때 문자열이 돼서 날라오는데,
+        //그 값을 다시 사용하려면 object 형태로 변경을 해야한다.
+        var data = [
+            {id:'kkk123', title:'java'},
+            {id:'aaa123', title:'jsp'},
+            {id:'bbb123', title:'js'}
+        ]
+
+        console.log(data);
+
+        //객체배열을 문자열로 바꿈
+        var result = JSON.stringify(data); //json을 문자열로 변경하는 방법
+        console.log(result);
+
+        //문자열을 객체배열로 바꿈
+        var result2 = JSON.parse(result);
+        console.log(result2);
+
+        //단 - 문자열을 제이슨 형식으로 변경할 때는 엄격한 규칙을 가진다.
+        //key, value 값을 문자열(" ")로 처리해야 한다
+        //JSON.parse('[{키:"aaa"123}]'); //에러
+        var result2 = JSON.parse('[{"키":"aaa123"}]');
+        console.log(result2);
+
+    </script>
+
+</body>
+</html>

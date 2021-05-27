@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 일반 함수
+        function method1(){
+            console.log(1);
+        }
+
+        var a = method1;
+        a();
+
+        //익명 함수
+        var a = function() {
+            console.log("익명함수1");
+        }
+        a();
+
+        var b = function(a,b) {
+            console.log("익명함수2");
+            return a + b;
+        }
+
+        console.log(b(1,2));
+
+        // 화살표함수(ES6)
+        // 리턴값이 1개라면 {}는 생략이 가능
+        var arrow = (a, b) => a + b;
+        console.log(arrow(10,20));
+
+        var arrow2 = (x) => {
+            var y = x * 10;
+            return y;
+        }
+
+        console.log(arrow2(10));
+</script>
+
+</body>
+</html>
