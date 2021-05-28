@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button type="button" id="bt">기본 이벤트 버튼</button>
+
+    <script>
+        var bt = document.getElementById('bt');
+        bt.onclick = function() {
+            console.log(bt);
+            console.log("기본 이벤트 실행!");
+        }
+    </script>
+
+    <hr>
+
+    <!-- 스크립트 태그를 위에 작성하면 태그를 인식할 수 없다
+         이때 window 객체를 사용해 페이지가 로드되자마자 태그를 가져온다 -->
+    <!-- js는 모든 요소가 로드된 후에 동작되어야 하기 때문에 
+         가장 마지막에 작성하는 게 일반적인데, 사용할 태그가 스크립트보다 
+         아래에 있다면 window.onload 이벤트를 사용하다.
+
+         단, window.onload() 이벤트는 화면에서 1개만 사용할 수 있다. -->
+    
+    <script>
+        
+        window.onload = function() {
+            var bt2 = document.getElementById("bt2");
+            bt2.onclick = function() {
+                console.log("기본 이벤트 실행~!");
+            }
+        }
+
+        // var bt2 = document.getElementById("bt2");
+        // bt2.onclick = function() {
+        //     console.log("기본 이벤트 실행~!");
+        // }
+    </script>
+
+    <button type="button" id="bt2">기본 이벤트 버튼 2</button>
+
+
+</body>
+</html>

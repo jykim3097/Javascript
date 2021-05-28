@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button type="button" id="bt">표준 이벤트 버튼</button>
+
+    <script>
+
+        // addEventListener의 매개변수("이벤트의 종류", 실행시킬 함수);
+        var bt = document.getElementById("bt");
+        
+        // 1st
+        // bt.addEventListener('click', test);
+        // function test() {
+        //     console.log("표준 이벤트!");
+        // }
+
+        // 2nd, 익명함수 이용
+        bt.addEventListener('click', function(){
+            console.log("익명함수를 이용한 표준 이벤트!");
+        })
+
+        bt.addEventListener('click', function(){
+            console.log("표준 이벤트 2");
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 1. 아래 checkbox 버튼을 클릭했을 때, "동의했습니다" 경고창을 띄우고 value 값을 확인(console) -->
+    <!-- 이벤트 앞에 명시적으로 javascript: 를 붙여주기도 한다 -->
+    <input type="checkbox" value="1" onclick="javascript:agree(this)">조항1
+    <input type="checkbox" value="2" onclick="agree(this)">조항2
+    <input type="checkbox" value="3" onclick="agree(this)">조항3
+    <input type="checkbox" value="4" onclick="agree(this)">조항4
+
+    <script>
+        // a.(속성명) 을 통해 태그의 속성에 접근할 수 있다
+        function agree(a) {
+            alert("동의했습니다.");
+            console.log(a.value)
+        }
+    </script>
+
+    <hr>
+
+    <!-- 2. 확인을 눌렀을 때, input 태그의 공백여부와 기억하기의 체크 여부를 확인-->
+    ID : <input type="text" id="id"><br><br>
+    기억하기 : <input type="checkbox" id="remember">
+    <button type="button" id="check">확인</button>
+
+    <script>
+        var id = document.getElementById("id");
+        var remember = document.getElementById("remember");
+        var check = document.getElementById("check");
+        
+        check.addEventListener('click', function(){
+            if(id.value != ""){
+                console.log(id.value);
+
+                if(remember.checked == true) {
+                    console.log("id를 기억합니다.")
+                } else {
+                    console.log("id를 기억하지 않습니다.")
+                }
+
+            } else {
+                console.log("id를 입력하세요");
+            }
+        })
+
+        // check.onClick = function() {
+        //     console.log("id값의 여부: " + id.value);
+        // }
+    </script>
+</body>
+</html>

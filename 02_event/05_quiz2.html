@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        window.onload = function() {
+            // var ok1 = document.getElementById('ok1');
+            // ok1.onclick = function() {
+            //     var result = confirm("네이버로 이동하시겠습니까?");
+            //     if(result) location.href="https://www.naver.com";
+            // }
+
+            // var ok2 = document.getElementById('ok2');
+            // ok2.onclick = function() {
+            //     var result = confirm("구글로 이동하시겠습니까?");
+            //     if(result) location.href="https://www.google.com";
+            // }
+
+            // 함수 지향적 코딩 방법을 연습하자
+            document.getElementById("ok1").onclick = function() {
+                if(confirm("네이버로 이동하시겠습니까?")) location.href = "https://www.naver.com";
+            }
+
+            document.getElementById("ok2").onclick = function() {
+                if(confirm("구글로 이동하시겠습니까?")) location.href = "https://www.google.com";
+            }
+
+            //addEventListener 방법으로 복습
+        }
+    </script>
+
+    <button id="ok1">네이버로 이동</button>
+    <button id="ok2">구글로 이동</button>
+
+</body>
+</html>
