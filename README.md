@@ -304,20 +304,20 @@ var result3 = JSON.parse('[{"키":"aaa123"}]');
 
 21.05.28   
 ## 이벤트핸들러
-* 웹브라우저의 다양한 기능을 컨트롤
 
 ### 이벤트
-* 동작할 때 발생하는 동적인 기능
+* 화면에서 클릭과 같은 동작 시 발생하는 동적인 기능
 * js의 강력한 기능
 * 자주 사용하는 이벤트
 	* click : 마우스로 클릭했을 때 이벤트가 발생한다
 	* keyup : key를 눌렀다가 떼면 동작하는 이벤트
 	* change : 값이 변경될 때마다 실행되는 이벤트
-		* select 함수를 쓸 때 onchange 이벤트를 사용한다
+		* **select 함수**를 쓸 때 onchange 이벤트를 사용한다
 	* load : 화면이 load가 완료된 시점에(랜더링이 다 된 시점에) 발생하는 이벤트
 * 이외에 필요한 이벤트는 찾아서 사용하면 된다
 
 ### 이벤트 핸들러 : 이벤트를 동작하게 하는 함수
+* 웹브라우저의 다양한 기능을 컨트롤
 * 태그와 스크립트의 이벤트를 연결하는 방식
 	* 인라인 이벤트 모델 : 태그 안에 직접 작성
 	* 기본 이벤트 모델 : 화면 상의 태그를 얻어와 익명함수 기법으로 이벤트를 만들어준다
@@ -328,19 +328,78 @@ var result3 = JSON.parse('[{"키":"aaa123"}]');
 * tag = element = 브라우저 상의 객체
 
 ### 인라인 이벤트 모델 
-* 태그 자체에 이벤트 속성을 작성
-* 이벤트 속성 안에 순수한 js 코드가 들어간다
+* 태그 자체에 이벤트 속성을 작성, on이 붙는다
+* 이벤트 속성 안에는 모든 스크립트 코드가 들어갈 수 있다
 * 동일한 태그에 이벤트를 여러개 걸 수 있다 (나열)
 	* 현재 클릭한 버튼이 어떤 버튼인지 알아야할 때 this를 이용한다
-	* 객체의 this랑 다르다
-
+	* 객체의 this랑 다르다 (잘 이해 못함)
 
 ### 기본 이벤트 모델
-* 화면에 있는 태그를 먼저 스크립트 태그로 통째로 얻어온다
-* 스크립트 태그를 위에 작성할 때에는 
-* 익명함수를 **대입**해서 사용
+* HTML 요소를 취득해 이벤트를 **익명함수로 연결하는 방식**
+	* 먼저 스크립트 태그에서 화면에 있는 태그를 통째로 얻어온다
+		* document.getElementById("id"); 와 같은 코드를 사용
+	* 스크립트 태그를 html 요소보다 먼저 작성할 경우에는 **window.onload**를 사용해 먼저 태그를 가져와야 작동한다.
+		* 단, window.onload 이벤트는 화면에서 한 번만 사용할 수 있다.
+```javascript
+<button type="button" id="a">버튼</button>
+
+<script>
+	// 일반적인 사용법 1
+	var a = document.getElemnetById("a");
+	a.onclick = function() {
+		// 실행 코드
+	}
+
+	// 일반적인 사용법 2
+	function test() {
+		// 실행 코드
+	}
+	var a = document.getElementById("a");
+	a.onclick = test;
+
+	// a.onclick = test();
+	// ()를 붙이면 코드 실행 시 함수가 한 번 실행되어 버리니 주의!
+</script>
+```
+
+
+```javascript
+<script>
+	var a = document.getElementById("a");
+
+	window.onload = function() {
+		var a = document.getElemnetById("a");
+		
+		a.onclick = function() {
+			// 실행 코드
+		}
+	}
+</script>
+
+<button type="button" id="a">버튼</button>
+```
 
 ### 표준 이벤트 모델
 * 객체.addEventListener(이벤트, 함수) 방식으로 연결
-	* 이벤트는 on을 붙이지 않고 문자열로 작성한다
-* 똑같은 이벤트를 여러개 작성해도 덮어씌여지지 않고 모두 실행된다
+	* 이벤트는 **on을 붙이지 않고** 문자열로 작성한다
+* 이벤트를 여러개 작성해도 모두 실행된다
+
+```javascript
+<button type="button" id="a">표준 이벤트 버튼</button>
+
+<script>
+	var a = document.getElementById("a");
+
+	// 방법 1
+	a.addEventListener('click', test);
+	function test() {
+		// 실행 코드
+	}
+
+	// 방법 2 - 익명함수 이용
+	a.addEventListener('click', function() {
+		// 실행 코드
+	})
+</script>
+
+```

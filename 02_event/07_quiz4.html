@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            display: inline-block; 
+            width: 100px; 
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- 과제) 자바스크립트 카운트 만들기
+         + 버튼을 누르면 1++
+         - 버튼을 누르면 1--
+         0보다 작아질 수 없다 -->
+    
+    <h1>자바스크립트 카운트</h1>
+    <span id="num"> 0 </span>
+    <button type="button" id="plus">+</button>
+    <button type="button" id="minus">-</button>
+
+    <script>
+        var plus = document.getElementById("plus");
+        var minus = document.getElementById("minus");
+        var num = document.getElementById("num");
+
+        plus.onclick = function() {
+            num.innerHTML = parseInt(num.innerHTML) + 1;
+        }
+
+        minus.onclick = function() {
+            if(num.innerHTML > 0 ){
+                num.innerHTML = parseInt(num.innerHTML) - 1 ;
+            }
+        }
+    </script>
+</body>
+</html>

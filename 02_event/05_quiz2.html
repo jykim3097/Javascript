@@ -31,7 +31,14 @@
                 if(confirm("구글로 이동하시겠습니까?")) location.href = "https://www.google.com";
             }
 
-            //addEventListener 방법으로 복습
+            // 표준 이벤트 모델 방법
+            document.getElementById("ok1").addEventListener('click', function() {
+                location.href = "https://www.naver.com";
+            })
+
+            document.getElementById("ok2").addEventListener('click', function() {
+                location.href = "https://www.google.com";
+            })
         }
     </script>
 
