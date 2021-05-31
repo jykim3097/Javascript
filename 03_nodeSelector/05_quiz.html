@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <section>
+        <form>
+            <label>아이디</label>
+            <input type="text" name="id" id="id"><br>
+            <span class="idMsg"></span><br>
+
+            <label>비밀번호</label>
+            <input type="text" name="pw" id="pw"><br>
+            <span class="pwMsg"></span>
+        </form>
+    </section>
+
+    <script>
+        var id = document.getElementById('id');
+        var idMsg = document.querySelector('.idMsg');
+
+        var pw = document.getElementById('pw');
+        var pwMsg = document.querySelector('.pwMsg');
+
+        id.onkeyup = function() {
+            var len = id.value.length;
+
+            if(len < 4) {
+                idMsg.innerHTML = '4글자 이상 입력하세요';
+                id.style.borderColor = '#ff0000';
+            } else {
+                idMsg.innerHTML = '';
+                id.style.borderColor = '#000000';
+            }
+        }
+
+        pw.onkeyup = function() {
+            if(pw.value.length < 9) {
+                pwMsg.innerHTML = '9글자 이상 입력하세요';
+                pw.style.borderColor = '#ff0000';
+            } else {
+                pwMsg.innerHTML = '';
+                pw.style.borderColor = '#000000';
+            }
+        }
+    </script>
+</body>
+</html>

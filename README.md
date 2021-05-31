@@ -310,7 +310,8 @@ var result3 = JSON.parse('[{"키":"aaa123"}]');
 * js의 강력한 기능
 * 자주 사용하는 이벤트
 	* click : 마우스로 클릭했을 때 이벤트가 발생한다
-	* keyup : key를 눌렀다가 떼면 동작하는 이벤트
+	* keyup : 키를 눌렀다가 떼면 동작하는 이벤트
+		* 키는 키보드의 키
 	* change : 값이 변경될 때마다 실행되는 이벤트
 		* **select 함수**를 쓸 때 onchange 이벤트를 사용한다
 	* load : 화면이 load가 완료된 시점에(랜더링이 다 된 시점에) 발생하는 이벤트
@@ -402,4 +403,54 @@ var result3 = JSON.parse('[{"키":"aaa123"}]');
 	})
 </script>
 
+```
+
+
+21.05.31.   
+## BOM과 DOM
+* js의 두번째 강력한 기능!
+#### 개념을 잘 파악해야한다
+
+### BOM vs DOM
+* BOM : Browser Object Model
+	* 브라우저 창에 내장되어 있는 객체를 의미
+	* java의 최상위 객체가 object 였다면, js의 최상위 객체는 window
+	* window 객체의 자식 객체
+		* js : object, array, function 등
+		* location, history 객체 등
+		* document(DOM)
+* DOM : Document Object Model
+	* DOM의 자식 객체로는 body, form 등이 있다
+	* DOM 객체를 이용한 요소의 접근은 JS의 강력한 기능
+	* 문서에 접근하는 다양한 기능을 제공
+
+###  Element(태그) 노드 선택
+* 다중 선택자 : 특정 이름을 가진 태그를 **모두** 가져옴
+	* _배열로 접근_
+	* 선택자 이름에 's'가 들어감
+	* getElement**s**ByName() : name이 xx인 태그를 전부 선택
+	* getElement**s**ByClassName() : 요소의 class가 xx인 태그 전부 선택
+	* getElement**s**ByTagName() : tag 이름이 xx인 태그 전부 선택
+	* *체크 박스나 라디오 버튼*에서 많이 사용한다
+* 단일 선택자 : 한개만 가져옴
+	* getElementById() : id가 xx인 태그를 (한개) 선택
+* 모든 태그는 document의 자식이기 때문에 모든 태그에 선택자를 붙여서 사용할 수 있다
+
+### querySelector()와 querySelectorAll()
+* css 문법으로 요소를 선택
+* 이 문법으로 위의 get~문법을 대체할 수 있다
+* querySelector() : 단일 선택자
+	* 만약 ul 태그 아래 li를 선택하면 **맨 위에 한 개만** 가져온다 (단일 선택자라서)
+* querySelectorAll() : 다중 선택자, ES6 문법
+
+### 노드 css 변경하기
+* style 속성을 이용한다
+* css 속성은 카멜표기법을 따른다, '-' 사용 불가
+* 전달되는 값은 **문자열**로 작성한다
+```javascript
+// 표현법 : 노드.style.css속성 = 값;
+xxx.style.color = 'red';
+   
+// js에서 '-'을 사용하면 에러가 뜨기 때문에 카멜표기법으로 작성한다
+xxx.style.backgroundColor = '#fff';
 ```

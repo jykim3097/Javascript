@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form>
+        좌석:
+        <input type="checkbox" name="seat" value="1">1
+        <input type="checkbox" name="seat" value="2">2
+        <input type="checkbox" name="seat" value="3">3
+        <input type="checkbox" name="seat" value="4">4
+        <input type="checkbox" name="seat" value="5">5
+        <input type="checkbox" name="seat" value="6">6
+        <input type="checkbox" name="seat" value="7">7
+        <input type="checkbox" name="seat" value="8">8<br>
+
+        <button type="button" id="btn">예약</button>
+    </form>
+
+    <script>
+        // 예약 버튼 클릭시 좌석이 최소 한 개 이상 체크되어 있지 않다면 경고창 띄우기
+        // 체크된 태그의 값이 있다면 리스트에 저장하고 json 형태의 문자열로 변경
+        
+        // 내 방법
+        var seat = document.querySelectorAll('form > input'); //input[name='seat']
+        var btn = document.getElementById('btn');
+        
+        function Seat(seat) {
+            this.seat = seat;
+        }
+
+        btn.onclick = function() {
+            
+            var cnt = 0;
+            var arr = [];
+
+            for(var i=0; i<seat.length; i++){
+                if(seat[i].checked) {
+                    cnt++;
+                    
+                    var s = new Seat(seat[i].value);
+                    arr.push(s);
+                }
+            }
+
+            if(cnt < 1) alert('체크하세요');
+            else {
+                var result = JSON.stringify(arr);
+                console.log(result);
+            }
+        }
+
+        // 쌤 방법
+        // var bool = true;
+        // var list = new Array();
+
+        // var checkbox = document.getElementsByName("seat");
+
+        // document.getElementById("btn").onclick = function() {
+
+        //     for(var i = 0; i < checkbox.length; i++) {
+                
+        //         if(checkbox[i].checked) {
+        //             bool = false;
+        //             list.push(checkbox[i].value);
+        //         }
+        //     }
+            
+        //     if(bool) {
+        //         alert('좌석체크는 필수입니다.')
+        //     } else {
+        //         var data = JSON.stringify( {data : list});
+        //         console.log(data);
+        //     }
+        // }
+
+    </script>
+</body>
+</html>

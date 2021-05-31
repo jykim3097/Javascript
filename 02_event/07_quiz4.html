@@ -40,5 +40,30 @@
             }
         }
     </script>
+
+    <hr>
+
+    <h3>자바스크립트 카운트(인라인 방식, 하나의 함수로 처리)</h3>
+
+    <input type="number" value="0" id="result">
+
+    <button type="button" onclick="pm(this);">+</button>
+    <button type="button" onclick="pm(this);">-</button>
+
+    <script>
+        var result = document.getElementById("result");
+
+        function pm(a) {
+            if(a.innerHTML == '+') {
+                result.value++;
+            } else if (a.innerHTML == '-') {
+                if(result.value <= 0) {
+                    alert("0보다 작을 수 없습니다.");
+                    return;
+                }
+                result.value--;
+            }
+        }
+    </script>
 </body>
 </html>

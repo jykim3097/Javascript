@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소선택2</title>
+</head>
+<body>
+    
+    <div class="box">
+        <ul>
+            <li>안녕하세요</li>
+            <li>hello</li>
+            <li>니하오~</li>
+        </ul>
+    </div>
+    <button type="button" id="btn">querySelector 확인</button>
+    <button type="button" id="btn2">querySelectorAll 확인</button>
+
+    <script>
+        var btn = document.getElementById('btn');
+
+        btn.onclick = function() {
+            // querySelector는 css문법으로 요소를 선택하는데 단일 선택
+            var li = document.querySelector('.box ul li')
+            console.log(li);
+
+        }
+
+        var btn2 = document.getElementById('btn2');
+        btn2.onclick = function() {
+
+            var lis = document.querySelectorAll('.box ul li');
+            for(var i in lis) {
+                console.log(lis[i].innerHTML);
+            }
+        }
+
+    </script>
+
+</body>
+</html>

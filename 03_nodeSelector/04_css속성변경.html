@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>JS로 CSS 변경하기</h2>
+
+     <div>
+         <ul class="box">
+             <li>홍길동</li>
+             <li>이순신</li>
+             <li>신사임당</li>
+         </ul>
+     </div>
+     <button type="button" id="btn">색상과 배경색 변경하기</button>
+
+     <script>
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click', function() {
+
+            var lis = document.querySelectorAll('.box > li');
+        
+            for(var i = 0; i < lis.length; i++) {
+                lis[i].style.color = '#ff0000';
+                lis[i].style.backgroundColor = '#0000ff';
+            }
+        
+            // lis[0].style.color = '#ff0000';
+            // lis[1].style.color = '#ff0000';
+            // lis[2].style.color = '#ff0000';
+
+            // lis[0].style.backgroundColor = 'blue';
+            // lis[1].style.backgroundColor = 'blue';
+            // lis[2].style.backgroundColor = 'blue';
+        })
+     </script>
+</body>
+</html>
