@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="add">추가하기</button>
+    <ul class="list">
+        <!-- <li><a href="#"></a></li> -->
+    </ul>
+
+    <script>
+
+        var count = 0;
+
+        var add = document.getElementById("add");
+        add.addEventListener('click', function(){
+
+            //createElement
+            var li = document.createElement("li");
+            var a = document.createElement("a");
+            a.href = "https://www.naver.com";
+            var text = document.createTextNode(++count +". js로 추가하는 태그");
+
+            // 자식 요소부터 만들기
+            a.appendChild(text);
+            li.appendChild(a);
+
+            document.querySelector(".list").appendChild(li);
+        })
+    </script>
+</body>
+</html>

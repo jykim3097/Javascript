@@ -454,3 +454,26 @@ xxx.style.color = 'red';
 // js에서 '-'을 사용하면 에러가 뜨기 때문에 카멜표기법으로 작성한다
 xxx.style.backgroundColor = '#fff';
 ```
+
+21.06.01   
+### 과제 노트
+* 03_nodeSelector\07_quiz.html
+* 똑같은 패딩 값을 주기 위해서 안보이는 div를 하나 만들어야 한다
+* box-sizing
+	* 이 속성은 border의 크기를 width에 포함시킬 지 여부를 결정한다
+	* border-box : width에 border의 크기를 포함시킨다
+* div에 패딩을 주고 위 속성을 사용하면 패딩값과 border 값을 포함한 width의 값을 사용할 수 있다
+
+* body 태그는 tagName 함수를 사용해 접근할 수도 있지만 _document 태그의 자식 객체이기 때문에_ 더 간단하게 접근할 수도 있다.
+
+```javascript
+var body = document.getElementsByTagName('body')[0];
+var body = document.body;
+```
+
+### 노드 생성과 추가
+* 모두 dom 객체 안에 있는 기능이다
+* createElement() : 요소 **생성**
+* createTextNode() : 텍스트 생성
+* appendChild() : 요소를 부모 자식 관계로 넣어줌
+* insertBefore(삽입노드, 기준노드) : 기준 노드 앞에 삽입 노드 추가

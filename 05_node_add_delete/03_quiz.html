@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>할 일 목록 만들기</h1>
+    <h2>홍길동님 안녕하세요</h2>
+    <input type="text" id="todo" placeholder="당신의 할 일을 적으세요">
+    <button type="button" id="btn">확인</button>
+
+    <ul>
+
+    </ul>
+
+    <script>
+        var btn = document.getElementById("btn");
+        var todo = document.getElementById("todo");
+        
+        btn.onclick = function() {
+            var li = document.createElement('li');
+            var text = document.createTextNode(todo.value);
+            
+            li.appendChild(text);
+            document.querySelector("ul").appendChild(li);
+            // li.innerHTML = "<button>X</button>"
+
+        }
+    </script>
+</body>
+</html>

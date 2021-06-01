@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="add">추가</button>
+    <button type="button" id="remove">삭제</button>
+    
+    <ul class="list">
+    </ul>
+
+
+    <script>
+        var list = document.querySelector(".list"); //부모요소
+        var add = document.getElementById("add");
+
+        // 추가
+        add.onclick = function() {
+
+            var li = document.createElement("li");
+            var a = document.createElement("a");
+            a.href = "#";
+            a.innerHTML = "글자";
+
+            li.appendChild(a);
+            list.appendChild(li);
+        }
+
+        // 삭제
+        var remove = document.getElementById("remove");
+        remove.onclick = function() {
+
+            console.dir(list);
+
+            // list.removeChild(list.childNodes[1]);
+
+            //자식만 가져온다
+            //console.log(list.children);
+
+            //삭제할 게 없으면 함수를 실행시키지 않는다(종료한다)
+            if(list.children.length == 0) return;
+            list.removeChild(list.children[0]);
+            
+        }
+
+    </script>
+
+</body>
+</html>

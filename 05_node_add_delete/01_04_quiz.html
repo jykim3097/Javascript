@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+        thead th {
+            border: 1px solid #777;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>교사</th>
+                <th>훈련과목</th>
+                <th>담당자</th>
+                <th>훈련내용</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" size="3"></td>
+                <td><input type="text"></td>
+                <td><input type="text" size="5"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" id="one">1개 추가하기</button>
+    <button type="button" id="five">5개 추가하기</button>
+
+    <script>
+        var one = document.getElementById("one");
+        var five = document.getElementById("five");
+
+        var input = "";
+        var td = "";
+        
+        function makeTR() {
+            var tr = document.createElement("tr");
+            
+            for(var i = 0; i<4; i++){
+                td = document.createElement("td");
+                input = document.createElement("input");
+                input.type = "text";
+
+                if(i == 0) {
+                    input.size = "3";
+                } else if (i == 2) {
+                    input.size = "5";
+                }
+
+                td.appendChild(input);
+                tr.appendChild(td);
+            }
+
+            document.querySelector("tbody").appendChild(tr);
+            
+        }
+
+        // 1개 추가하기
+        one.onclick = makeTR;
+
+        // 5개 추가하기
+        five.onclick = function() {
+
+            for(var i=0; i<5; i++){
+                makeTR();
+            }
+        }
+    </script>
+</body>
+</html>
