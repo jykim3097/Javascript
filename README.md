@@ -479,5 +479,10 @@ var body = document.body;
 * 모두 dom 객체 안에 있는 기능이다
 * createElement() : 요소 **생성**
 * createTextNode() : 텍스트 생성
+	* innerHTML로 대체해도 된다
 * appendChild() : 요소를 부모 자식 관계로 넣어줌
 * insertBefore(삽입노드, 기준노드) : 기준 노드 앞에 삽입 노드 추가
+
+### 노드 삭제
+* remove() : 나 자신 노드 삭제
+* removeChild(삭제할 자식 요소) : 자식 노드 삭제

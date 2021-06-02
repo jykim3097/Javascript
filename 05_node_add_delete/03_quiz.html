@@ -53,9 +53,13 @@
 
             // 리스트에 추가
             var li = document.createElement("li");
-            var text = document.createTextNode(todo.value);
+            var text = document.createTextNode(todo.value+" ");
+            var liBtn = document.createElement("button");
+            liBtn.type = "button";
+            liBtn.innerHTML = "X";
 
             li.appendChild(text);
+            li.appendChild(liBtn);
             document.querySelector("ul").appendChild(li);
 
             // input 내용 지우기
