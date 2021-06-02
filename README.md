@@ -467,9 +467,13 @@ xxx.style.backgroundColor = '#fff';
 * body 태그는 tagName 함수를 사용해 접근할 수도 있지만 _document 태그의 자식 객체이기 때문에_ 더 간단하게 접근할 수도 있다.
 
 ```javascript
+// body 태그에 접근하는 두가지 방법(더 있을 수 있음)
 var body = document.getElementsByTagName('body')[0];
 var body = document.body;
 ```
+
+### 04_sidebar 노트
+* 위치가 위쪽 오른쪽 끝과 같이 구석에 있으면 position 사용을 의심해보자
 
 ### 노드 생성과 추가
 * 모두 dom 객체 안에 있는 기능이다
