@@ -5,11 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .todo {
+            display: inline-block;
+        }
+    </style>
+
 </head>
 <body>
     <h1>할 일 목록 만들기</h1>
-    <h2>홍길동님 안녕하세요</h2>
-    <input type="text" id="todo" placeholder="당신의 할 일을 적으세요">
+    <div class="name">
+        <input type="text" placeholder="이름을 입력하세요" id="nameIn">
+        <button type="button" id="nameBtn">입력</button>
+    </div>
+    <div class="todo">
+        <input type="text" id="todo" placeholder="당신의 할 일을 적으세요">
+    </div>
     <button type="button" id="btn">확인</button>
 
     <ul>
@@ -17,17 +29,44 @@
     </ul>
 
     <script>
+        var nameIn = document.getElementById("nameIn");
+        var nameBtn = document.getElementById("nameBtn");
+
+        // 환영문구
+        nameBtn.onclick = function() {
+            var nameValue = nameIn.value;
+            nameIn.style.display = "none";
+            nameBtn.style.display = "none";
+
+            var h2 = document.createElement("h2");
+            var text = document.createTextNode(nameValue + "님, 환영합니다.");
+
+            h2.appendChild(text);
+            document.querySelector(".name").appendChild(h2);
+        }
+
+        // 할 일
         var btn = document.getElementById("btn");
-        var todo = document.getElementById("todo");
         
         btn.onclick = function() {
-            var li = document.createElement('li');
+            var todo = document.getElementById("todo");
+
+            // 리스트에 추가
+            var li = document.createElement("li");
             var text = document.createTextNode(todo.value);
-            
+
             li.appendChild(text);
             document.querySelector("ul").appendChild(li);
-            // li.innerHTML = "<button>X</button>"
 
+            // input 내용 지우기
+            todo.remove();
+
+            var input = document.createElement("input");
+            input.type = "text";
+            input.placeholder="당신의 할 일을 적으세요";
+            input.id = "todo";
+
+            document.querySelector(".todo").appendChild(input);
         }
     </script>
 </body>
