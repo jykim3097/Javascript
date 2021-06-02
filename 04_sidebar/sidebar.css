@@ -2,50 +2,51 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    text-decoration: none;
 }
 
-
-.menuBtn {
-    position: fixed;
-    left: 0;
-    top: 50px;
-    z-index: 50;
+.menu {
     background-color: #263238;
     color: #ffffff;
     display: block;
     width: 50px;
     height: 50px;
-    text-align: center;
     line-height: 50px;
-    cursor: pointer; /* 마우스 올리면 손가락 모양이 나타남*/
+    text-align: center;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    z-index: 50;
+    cursor: pointer;
 }
 
 .sidenav {
-    position: fixed;
-    left: 0;
-    top: 50px;
     width: 200px;
     height: 100%;
     background-color: #263238;
-    z-index: 30;
     padding-top: 50px;
-    overflow: hidden; /* 영역이 0으로 줄었을 때 안쪽 a태그를 넓이에 맞추어 숨김 */
-
+    position: fixed;
+    top: 50px;
+    left: 0;
+    z-index: 30;
+    overflow: hidden;
     transition: all 0.5s ease-in-out;
 }
 
-/* 모바일 환경 사이드 메뉴 */
 @media (max-width:767px) {
-    .sidenav {width: 0px;}
+    .sidenav {
+        width: 0px;
+    }
 }
 
 .sidenav a {
     color: #aaaaaa;
+    text-decoration: none;
     display: block;
-    width: 100%;
-    box-sizing: border-box;
+    width: 200px;
+    height: 50px;
     padding: 10px 20px;
+    box-sizing: border-box;
+    line-height: 30px;
 }
 
 .sidenav a:hover {
