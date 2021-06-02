@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>첫 번째 노드 삭제</title>
 </head>
 <body>
+    <h2>첫번째 노드 삭제하기</h2>
     <button type="button" id="add">추가</button>
     <button type="button" id="remove">삭제</button>
     
@@ -35,11 +36,8 @@
         remove.onclick = function() {
 
             console.dir(list);
-
-            // list.removeChild(list.childNodes[1]);
-
-            //자식만 가져온다
-            //console.log(list.children);
+            console.log(list.childNodes);
+            console.log(list.children); // 자식만 가져온다
 
             //삭제할 게 없으면 함수를 실행시키지 않는다(종료한다)
             if(list.children.length == 0) return;

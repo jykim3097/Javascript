@@ -491,10 +491,29 @@ var body = document.body;
 * remove() : 나 자신 노드 삭제
 * removeChild(삭제할 자식 요소) : 자식 노드 삭제
 
+#### 자식 노드 childNodes와 children
+* childNodes : text를 포함해 모든 자식노드를 가져온다
+* children : text를 포함하지 않고 자식노드만 가져온다
+	* 사용할 때 접근에 더 유용하다
+
+### 과제 노트
+* 05_node_add_delete\03_quiz.html
+* input에서 내용을 가져오고 가져온 내용을 지우려면 value에 **공백**을 덮어씌우면 된다
+
+
 ### 부모 노드와 자식 노드 선택
+* parentElement : 부모 노드 선택
+	* parentNode : text 요소도 포함되어 있는 부모 노드 선택
+* nextElementSibling : 다음 형제 노드 선택
+* previousElementSibling : 이전 형제 노드 선택
+* firstChild, lastChild : 첫번째, 마지막 자식 노드 선택
 
-https://stackoverflow.com/questions/12077859/difference-between-this-and-event-target
+### 과제 노트
+* this와 event.target
+* https://stackoverflow.com/questions/12077859/difference-between-this-and-event-target
 
-### pdf에 없는 클래스 선택
-* 클래스로 접근
+### 클래스 선택 (pdf에 없는 내용)
 * 클래스는 예약어이기 때문에 가져오는 방법이 다르다
+* className 으로 가져온다
+* 한 태그가 클래스를 여러개 가질 수 있기 때문에 classList로 모든 class를 가져올 수도 있다
+	* 하위 함수에는 remove, contains 등이 있는데 dir을 통해 확인할 수 있다

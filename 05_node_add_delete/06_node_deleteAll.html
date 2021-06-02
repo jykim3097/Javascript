@@ -87,11 +87,12 @@
         var allCheck = document.querySelector(".allCheck");
         var list = document.querySelectorAll(".check");
 
+        // 전체 선택
         allCheck.onclick = function() {
-
+            
             if(allCheck.checked == true) {
                 for(var i=0; i<list.length; i++){
-    
+                    
                     list[i].checked = true;
                 }
             }
@@ -101,24 +102,26 @@
                 }
             }
         }
-
+        
         var del = document.querySelector(".del");
         var seldel = document.querySelector(".selectDel");
         
-        seldel.onclick = function() {
-            
-            for(var i=0; i<list.length; i++) {
-                if(list[i].checked == true) 
-                    list[i].parentElement.parentElement.remove();
-            }
-        }
-
+        //전체삭제
         del.onclick = function() {
             
             if(allCheck.checked == true) {
                 for(var i=0; i<list.length; i++){
                     list[i].parentElement.parentElement.remove();
                 }
+            }
+        }
+
+        //선택삭제
+        seldel.onclick = function() {
+            
+            for(var i=0; i<list.length; i++) {
+                if(list[i].checked == true) 
+                list[i].parentElement.parentElement.remove();
             }
         }
     </script>
