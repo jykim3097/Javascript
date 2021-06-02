@@ -490,3 +490,11 @@ var body = document.body;
 ### 노드 삭제
 * remove() : 나 자신 노드 삭제
 * removeChild(삭제할 자식 요소) : 자식 노드 삭제
+
+### 부모 노드와 자식 노드 선택
+
+https://stackoverflow.com/questions/12077859/difference-between-this-and-event-target
+
+### pdf에 없는 클래스 선택
+* 클래스로 접근
+* 클래스는 예약어이기 때문에 가져오는 방법이 다르다

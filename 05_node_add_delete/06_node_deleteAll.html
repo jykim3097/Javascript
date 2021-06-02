@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        table {
+            text-align: center;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        th, td, tr {
+            border: 1px solid #777;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" class="del">전체삭제</button>
+    <button type="button" class="selectDel">선택삭제</button>
+    <br>
+    <br>
+
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox" class="allCheck"></th>
+                <th>번호</th>
+                <th>이름</th>
+                <th>내용</th>
+            </tr>
+        </thead>
+        <tbody class="tableList">
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>1</td>
+                <td>홍길동</td>
+                <td>안녕하세요</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>2</td>
+                <td>이순신</td>
+                <td>안녕하세요</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>3</td>
+                <td>홍길자</td>
+                <td>안녕하세요</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>4</td>
+                <td>강감찬</td>
+                <td>안녕하세요</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>5</td>
+                <td>신사임당</td>
+                <td>안녕하세요</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <script>
+        var allCheck = document.querySelector(".allCheck");
+        var list = document.querySelectorAll(".check");
+
+        allCheck.onclick = function() {
+
+            if(allCheck.checked == true) {
+                for(var i=0; i<list.length; i++){
+    
+                    list[i].checked = true;
+                }
+            }
+            else {
+                for(var i=0; i<list.length; i++){
+                    list[i].checked = false;
+                }
+            }
+        }
+
+        var del = document.querySelector(".del");
+        var seldel = document.querySelector(".selectDel");
+        
+        seldel.onclick = function() {
+            
+            for(var i=0; i<list.length; i++) {
+                if(list[i].checked == true) 
+                    list[i].parentElement.parentElement.remove();
+            }
+        }
+
+        del.onclick = function() {
+            
+            if(allCheck.checked == true) {
+                for(var i=0; i<list.length; i++){
+                    list[i].parentElement.parentElement.remove();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -18,7 +18,7 @@
         <button type="button" id="btn">확인</button>
     </div>
 
-    <ul>
+    <ul class="todoList">
 
     </ul>
 
@@ -41,13 +41,14 @@
 
         // 할 일
         var btn = document.getElementById("btn");
-        
+        var upBtn = "";
         btn.onclick = function() {
             var todo = document.getElementById("todo");
 
             // 리스트에 추가
             var li = document.createElement("li");
             var text = document.createTextNode(todo.value+" ");
+            li.appendChild(text);
             
             // input 내용 지우기
             todo.value = ""; // 공백 처리를 하면 지워진다
@@ -57,22 +58,61 @@
             liBtn.type = "button";
             liBtn.id = "del";
             liBtn.innerHTML = "X";
+            liBtn.addEventListener('click', deleteList);
             
-            li.appendChild(text);
-            li.appendChild(liBtn);
-            document.querySelector("ul").appendChild(li);
-            
-            liBtn.addEventListener('click', deleteList());
-        }
+            // 이동 버튼 생성
+            upBtn = document.createElement("button");
+            upBtn.type = "button";
+            upBtn.innerHTML = "↑";
+            upBtn.addEventListener('click', up);
 
+            var downBtn = document.createElement("button");
+            downBtn.type = "button";
+            downBtn.innerHTML = "↓";
+            downBtn.addEventListener('click', down);
+            
+            li.appendChild(liBtn);
+            li.appendChild(upBtn);
+            li.appendChild(downBtn);
+            document.querySelector("ul").appendChild(li);
+        }
+        
         // 할 일 삭제
         function deleteList() {
-
+            
             //문제
             //1. x버튼 클릭 시 해당 버튼 요소를 판별할 수 없음
             //2. x버튼 클릭 시 부모요소인 li를 삭제 해야함
 
+            var current = this.parentElement;
+            current.remove();
             
+        }
+        
+        var todoList = document.querySelector(".todoList");
+
+        function up() {
+            var current = this.parentElement;
+            var previous = current.previousElementSibling;
+
+            if(previous == null) {
+                alert("첫번째 행입니다.");
+                return;
+            } 
+
+            if(confirm("이동하시겠습니까?")) todoList.insertBefore(current, previous);
+        }
+
+        function down() {
+            var current = this.parentElement;
+            var next = current.nextElementSibling;
+
+            if(next == null) {
+                alert("마지막 행입니다.");
+                return;
+            }
+
+            if(confirm("이동하시겠습니까?")) todoList.insertBefore(next, current);
         }
 
 
