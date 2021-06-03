@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Object</title>
+
+</head>
+<body>
+    
+    <h3>값을 변경해서 집어넣는 형태가 아니고, 동일한 태그에 대해서 그 즉시 반영하는 이벤트를 주려면??</h3>
+    <!-- 아는 방법은 inline 이벤트 형식 -->
+    
+    <ul class="list">
+        <li>1. 홍길동</li>
+        <li>2. 이순신</li>
+        <li>3. 홍길자</li>
+        <li>4. 신사임당</li>
+        <li>5. 김유신</li>
+    </ul>
+
+    <p class="result"></p>
+
+    <!-- script -->
+    <script>
+        //이벤트가 발생했을 때 실행되는 함수의 arguments 객체에 event 객체를 자동으로 넣어준다
+        //event 객체에는 이벤트 관련된 많은 기능이 들어있는데, 그 중 이벤트가 발생한 곳을 확인하는 기능 target
+
+        var list = document.querySelectorAll(".list > li");
+        
+        // 좋은 방법은 아니다 ex) li가 1000개 있을 때
+        for(var i=0; i<list.length; i++){
+            
+            list[i].onclick = function(){
+                // console.log(arguments);
+                // console.log(event);
+                // console.log(event.target);
+                
+                document.querySelector(".result").innerHTML = event.target.innerHTML;
+                
+            }
+        }
+
+    </script>
+
+</body>
+</html>

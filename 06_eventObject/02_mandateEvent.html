@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>이벤트 위임</h3>
+    <h4>부모에 이벤트를 걸어놓으면 자식 태그한테도 자동으로 전파되는 특징이다.</h4>
+    
+    <ul class="parent">
+        <li>1. 홍길동</li>
+        <li>2. 이순신</li>
+        <li>3. 홍길자</li>
+        <li>4. 신사임당</li>
+        <li>5. 김유신</li>
+    </ul>
+
+    <p class="result"></p>
+
+    <script>
+        var parent = document.querySelector(".parent");
+        parent.onclick = function() {
+            
+            // console.dir(event.target); //li
+            // console.log(event.currentTarget); //ul
+
+            // 부모에서 작동하지 않도록 처리 - 자식 태그가 아니면 이벤트 종료하기
+            if(event.target.tagName != "LI") return;
+            document.querySelector(".result").innerHTML = event.target.innerHTML;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 상황: 기능 별로 다른 버튼들이 여러개라면? -->
+    <!-- 
+        1. 이벤트 위임 방식으로 동일한 이벤트를 실행
+        2. 해당 버튼에 알맞은 클래스 속성을 이용한다.
+     -->
+     <!-- 관리자 프로그램에서 많이 사용된다 -->
+    <section id="section">
+        <div>
+            <span>홍길동</span>
+            <button type="button" class="btn sel">선택</button>
+            <button type="button" class="btn del">삭제</button>
+        </div>
+        <div>
+            <span>이순신</span>
+            <button type="button" class="btn sel">선택</button>
+            <button type="button" class="btn del">삭제</button>
+        </div>
+        <div>
+            <span>신사임당</span>
+            <button type="button" class="btn sel">선택</button>
+            <button type="button" class="btn del">삭제</button>
+        </div>
+    </section>
+
+    <script>
+        var section = document.querySelector("#section");
+        
+        section.onclick = function() {
+
+            //index로 접근하면 위험! contains를 사용하자
+            if(event.target.classList.contains("sel")) {
+                event.target.previousElementSibling.style.color = "red";
+            } else if (event.target.classList.contains("del")) {
+                event.target.parentNode.remove();
+            }
+        }
+    </script>
+
+</body>
+</html>

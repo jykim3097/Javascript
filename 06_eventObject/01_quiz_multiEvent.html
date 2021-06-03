@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        ul, li {
+            list-style: none;
+        }
+        li {
+            display: inline-block;
+        }
+        img {
+            width: 100px;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <h3>다중 이벤트 처리</h3>
+
+    <div class="imgWrap">
+        <ul>
+            <li><img src="img/4.jpg" alt="spring"></li>
+            <li><img src="img/1.jpg" alt="summer"></li>
+            <li><img src="img/2.jpg" alt="autumn"></li>
+            <li><img src="img/3.jpg" alt="winter"></li>
+        </ul>
+    </div>
+
+    <div class="result">
+        결과:<br>
+        <img src="">
+    </div>
+
+    <script>
+        // 초보자 방법 - 처리할 양이 많아지면 문제가 있다
+        var list = document.querySelectorAll(".imgWrap img");
+        var result = document.querySelector(".result > img");
+
+        for(var i=0; i<list.length; i++){
+            list[i].addEventListener("click", handleImg);
+        }
+
+        function handleImg() {
+            console.log(this);
+            console.log(event.target);
+            result.src = event.target.src;
+            result.style.width = "300px";
+        }
+    </script>
+</body>
+</html>

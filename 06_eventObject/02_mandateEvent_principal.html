@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .func1 {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+
+        .func2 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+
+        .func3 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+
+        .fun1 {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+
+        .fun2 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+
+        .fun3 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    
+    <h3>캡처링 vs 버블링</h3>
+
+    <div class="func1">
+        <div class="func2">
+            <div class="func3">func3(자식)</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="fun1">
+        <div class="fun2">
+            <div class="fun3">func3(자식)</div>
+        </div>
+    </div>
+
+    <script>
+        // DOM의 이벤트 동작 방식의 기본은 버블링이다
+        // 버블링 > 부모, 자식 모두 이벤트가 걸려 있을 때, 이벤트가 자식>부모로 전파된다
+        // 3번 클릭시 > 2 > 1 순서로 버블링 된다
+
+        var func1 = document.querySelector(".func1");
+        var func2 = document.querySelector(".func2");
+        var func3 = document.querySelector(".func3");
+
+        func1.onclick = function() {
+            alert("func1");
+        }
+        
+        func2.onclick = function() {
+            alert("func2");
+        }
+        
+        func3.onclick = function() {
+            alert("func3");
+            event.stopPropagation(); //이후 버블링을 막는다(중단한다)
+        }
+
+        // 이벤트 캡쳐링 - addEventListener로만 걸 수 있다
+        // 부모, 자식에 모두 이벤트가 걸려있을 때 이벤트가 부모>자식으로 전파된다
+        // 이벤트 실행 순서가 1>2>3 이다
+        // 캡처링은 사용할 일이 거의 없다
+        var fun1 = document.querySelector(".fun1");
+        var fun2 = document.querySelector(".fun2");
+        var fun3 = document.querySelector(".fun3");
+
+        // (이벤트, 함수, 캡쳐링 동작 여부)
+        fun1.addEventListener("click", function() {
+            alert("fun1");
+            // event.stopPropagation(); //이후 캡쳐링을 막는다
+        }, true);
+
+        fun2.addEventListener("click", function() {
+            alert("fun2");
+        }, true);
+
+        fun3.addEventListener("click", function() {
+            alert("fun3");
+        }, true);
+
+    </script>
+</body>
+</html>

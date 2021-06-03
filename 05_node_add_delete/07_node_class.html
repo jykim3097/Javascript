@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <button type="button" class="btn btn-default" id=btn>버튼</button>
+    <button type="button" class="btn btn-default" id="btn">버튼</button>
 
     <script>
         var btn = document.getElementById("btn");
@@ -33,5 +33,52 @@
         console.log(btn.classList.contains("new-btn"));
     </script>
 
+    <hr>
+
+    <style>
+        .toggle {
+            background-color: coral;
+        }
+        .change {
+            background-color: darkgreen;
+        }
+    </style>
+
+    <h3>클래스를 이용해서 하나의 버튼을 두개의 기능으로 사용하는 토글 버튼</h3>
+    <button type="button" class="toggle" id="toggle">토글버튼</button>
+
+    <script>
+        // 클래스 이름을 바꾸려면 고정된 값 하나가 필요하다(id or class)
+        var toggle = document.getElementById("toggle");
+        
+        toggle.onclick = function() {
+            if(toggle.className == "toggle") {
+                toggle.className = "change";
+                toggle.innerHTML = "체인지";
+            } else {
+                toggle.className = "toggle";
+                toggle.innerHTML = "토글버튼";
+            }
+        }
+    </script>
+
+    <hr>
+
+    <h3>aa클래스를 추가하고 지우는 형태의 토글 버튼</h3>
+
+    <!-- class 값을 고정으로 두고 다른 클래스 값을 추가, 삭제 -->
+    <button type="button" class="toggle" id="toggle2">토글버튼2</button>
+
+    <script>
+        var toggle2 = document.getElementById("toggle2");
+        toggle2.onclick = function() {
+            
+            // if(toggle2.classList.contains("aa")) toggle2.classList.remove("aa");
+            // else toggle2.classList.add("aa");
+
+            // toggle함수 하나로 위의 조건문처럼 동작할 수 있다
+            toggle2.classList.toggle("aa");
+        }
+    </script>
 </body>
 </html>
