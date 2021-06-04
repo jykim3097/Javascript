@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 부트스트랩 css파일 참조 -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- jquery 파일 참조 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- 부트스트랩 js파일 참조 -->
+    <script src="js/bootstrap.js"></script>
+
+    <!-- 개인 커스텀 디자인 -->
+    <link rel="stylesheet" href="css/style-cat.css">
+    <link rel="stylesheet" href="css/form_join.css">
+
+</head>
+<body>
+    
+    <header class="custom_header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="img/logo.svg" style="width:40px;" alt="logo">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">예약</a></li>
+                        <li><a href="#">Q&A</a></li>
+                    </ul>
+
+                    <!-- 우측 회원 메뉴 -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <!-- 검색바 -->
+                    <form class="navbar-form navbar-right" action="/action_page.php">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-8 join-form">
+
+                    <div class="titlebox">회원가입</div>
+
+                    <form name="registForm">
+                        <div class="form-group">
+                            <label>아이디</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="영어와 숫자를 포함한 4~12글자로 작성하세요" name="id">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">아이디 중복체크</button>
+                                </div>
+                            </div>
+                            <div class="id-check">
+                                <span></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>비밀번호</label>
+                            <input type="password" class="form-control" placeholder="영어 소문자와 대문자, 숫자를 포함해 8~16글자로 작성하세요" name="pw">
+                            <div class="pw-check">
+                                <span></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>비밀번호 확인</label>
+                            <input type="password" class="form-control" placeholder="영어 소문자와 대문자, 숫자를 포함해 8~16글자로 작성하세요" name="pw2">
+                            <div class="pw2-check">
+                                <span></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>이름</label>
+                            <input type="text" class="form-control" placeholder="이름을 입력하세요" name="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>휴대폰 번호</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="'-'를 제외한 숫자를 입력하세요'" name="phoneNum">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">본인인증</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>기본 주소</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="우편번호" name="address" readonly>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">주소찾기</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>기본 주소</label>
+                            <input type="text" class="form-control" placeholder="기본 주소" name="address">
+                        </div>
+
+                        <div class="form-group">
+                            <label>상세 주소</label>
+                            <input type="text" class="form-control" placeholder="상세 주소" name="address">
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-block">가입하기</button>
+                        <button type="button" class="btn btn-info btn-block">로그인하기</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-sm-12"> <!--왼쪽 영역-->
+                    <div class="copyright">
+                        <a href=""><img src="img/logo.svg" alt="logo" style="width: 30px;"></a>
+                        <div class="top">
+                            jiyoung github |  대표자 : jykim | E-MAIL : jykim3097@gmail.com <br>
+                        </div>
+                        <div class="bottom">
+                            개인정보보호책임자 : jykim | jykim3097의 github입니다<br>
+                            주소 : 대한민국 <br>
+                            <address>@Bootstrap. ALL RIGHTS RESERVED</address>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-12"> <!--오른쪽 영역-->
+                    <ul class="footer-menu">
+                        <li><a href="">고객센터</a></li>
+                        <li><a href="">유용한정보</a></li>
+                        <li><a href="">개인정보취급방침</a></li>
+                        <li><a href="">QNA</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        var id = document.registForm.id;
+        var idCheck = document.querySelector(".id-check");
+
+        id.onkeyup = function() {
+
+            if(id.value.length < 4){
+                id.style.borderColor = "red";
+                idCheck.style.color = "red";
+                idCheck.firstElementChild.innerHTML = "아이디는 4글자 이상입니다.";
+            } else {
+                id.style.borderColor = "#66afe9";
+                idCheck.style.color = "#66afe9";
+                idCheck.firstElementChild.innerHTML = "사용 가능합니다";
+            }
+        }
+
+        var pw = document.registForm.pw;
+        var pwCheck = document.querySelector(".pw-check");
+
+        pw.onkeyup = function() {
+
+            var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/;
+
+            if(!regex.test(pw.value)) {
+                pw.style.borderColor = "red";
+                pwCheck.style.color = "red";
+                pwCheck.firstElementChild.innerHTML = "비밀번호 규칙을 확인하세요.";
+            } else {
+                pw.style.borderColor = "#66afe9";
+                pwCheck.style.color = "#66afe9";
+                pwCheck.firstElementChild.innerHTML = "사용 가능합니다";
+            }
+            // if(pw.value.length < 6){
+            //     pw.style.borderColor = "red";
+            //     pwCheck.style.color = "red";
+            //     pwCheck.firstElementChild.innerHTML = "비밀번호는 6글자 이상입니다.";
+            // } else {
+            //     pw.style.borderColor = "#66afe9";
+            //     pwCheck.style.color = "#66afe9";
+            //     pwCheck.firstElementChild.innerHTML = "사용 가능합니다";
+            // }
+        }
+
+        var pw2 = document.registForm.pw2;
+        var pw2Check = document.querySelector(".pw2-check");
+
+        pw2.onkeyup = function() {
+            if( pw.value != pw2.value ){
+                pw2.style.borderColor = "red";
+                pw2Check.style.color = "red";
+                pw2Check.firstElementChild.innerHTML = "비밀번호가 일치하지 않습니다.";
+            } else {
+                pw2.style.borderColor = "#66afe9";
+                pw2Check.style.color = "#66afe9";
+                pw2Check.firstElementChild.innerHTML = "비밀번호가 일치합니다.";
+            }
+        }
+    </script>
+</body>
+</html>

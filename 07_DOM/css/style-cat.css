@@ -1,0 +1,372 @@
+/* 1. 웹폰트 선언 */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* 2. 디자인 시작 시 기본 선언 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Nanum Gothic', sans-serif; /*웹폰트 적용*/
+    width: 100%;
+    min-width: 320px;
+}
+
+img {
+    max-width: 100%; /*size가 변했을 때 넓이 유지*/
+    height: auto; /*넓이에 따라 높이가 변함*/
+}
+
+/* 고유한 디자인 요소 제거 */
+input, textarea, button, select {
+    /* 브라우저별로 고유하게 적용되는 form 관련 요소들의 css 제거 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+ul, li, dl, ol {
+    list-style: none;
+}
+
+/* 버튼과 input 태그의 윤곽 변경 */
+.btn {border-radius: 4px;}
+.form-control {border-radius: 4px;}
+section {margin-top: 52px;}
+
+footer {margin-top: 80px;}
+.title-btn {text-align: center;}
+
+
+
+/* =====헤더===== */
+.header_col1 {
+    background-color: #eee;
+    overflow: hidden;
+    height: 52px;
+    line-height: 52px;
+}
+
+.top_width > ul > li.on {
+    /* 선택자를 붙여서 사용하게 되면 li태그의 클래스 이름이 on인 것을 의미 */
+    border-top: 1px solid #d2d0d0;
+    line-height: 42px;
+    border-left: 1px solid #d2d0d0;
+    border-right: 1px solid #d2d0d0;
+    border-bottom: 1px solid #fff;
+    background: #fff;
+    font-weight: 500;
+    
+    border-bottom: 5px solid #037fc3;
+}
+
+.top_width > ul > li {
+    display: inline-block;
+    width: 135px;
+    text-align: center;
+}
+
+.top_width > ul > li > a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    color: #666;
+}
+
+.top_width {
+    overflow: hidden;
+    margin-top: 2px;
+    width: 1240px;
+    margin: 0 auto;
+}
+
+.fl_left {
+    float: left;
+}
+
+.fl_right {
+    float: right;
+}
+
+.fl_right > a {
+    text-decoration: none;
+    background-color: white;
+    border: 1px solid #d2d2d2;
+    border-radius: 3px;
+    padding: 7px;
+    font-size: 0.8em;
+    color : #666;
+    font-weight: 700;
+}
+
+/* 아래쪽 헤더 */
+.top_hide {display: none;}
+
+/* a는 inline이라 넓이를 가질  */
+.logo a {
+    background-image: url("../img/logo.png");
+    background-repeat: no-repeat;
+    display: block;
+    /* 이미지 크기를 넣어준다 */
+    width: 200px;
+    height: 33px;
+    margin: 23px 0 0;
+}
+
+.logo {float: left;}
+.top_menu {
+    float: left;
+    margin-left: 30px;
+}
+.top_menu > ul > li {display: inline-block;}
+
+.top_menu > ul > li > a {
+    display: block;
+    text-decoration: none;
+    height: 80px;
+    line-height: 80px;
+    padding: 0 5px;    
+    margin: 0 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.top_menu > ul > li > a:hover {
+    color : #39f;
+}
+
+
+/* 헤더 디자인 2 */
+
+.navbar {
+    margin: 0;
+}
+
+.custom_header {
+    background-color: #263238;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+}
+
+nav a {
+    color: white;
+}
+
+.navbar-brand {
+    padding: 5px 15px;
+}
+
+.navbar-brand > img, .copyright > a > img {
+    background-color : #963;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* 마우스 hover, focus 시 백그라운드 색상 변경  */
+.custom_header .nav > li > a:hover,
+.custom_header .nav > li > a:focus {
+    background-color: #304047;
+    color: white;
+}
+
+/* 모바일 환경에서 메뉴 윤곽색 */
+.custom_header .navbar-toggle,
+.custom_header .navbar-toggle .icon-bar {
+    color: #fff;
+    border : 1px solid #fff;
+}
+
+/* 드롭다운 메뉴 색상 변경 */
+.dropdown-menu > li > a {
+    color: #333;
+}
+
+@media(max-width:767px) {
+    .dropdown-menu > li > a {
+        color: #eee;
+    }
+}
+
+/* =====footer===== */
+footer {
+    background-color: #263248;
+    color: #eee;
+    padding: 30px 0;
+}
+
+footer .copyright {
+    font-size: 15px;
+    font-weight: 500;
+    overflow: hidden;
+}
+
+footer .copyright a {
+    float: left;
+    margin-right: 10px;
+}
+
+footer .copyright .bottom {
+    margin-left: 40px;
+}
+
+footer .footer-menu > li {
+    display: inline-block;
+}
+
+footer .footer-menu > li > a {
+    display: block;
+    padding: 0 15px;
+    color: #eee;
+}
+
+/* 슬라이더 영역 디자인 */
+.slide-list {
+    padding: 0;
+}
+
+.carousel-inner {
+    text-align: center;
+    background-color: black;
+}
+
+.carousel-inner > .item > img {
+    height: 500px;
+    display: inline-block;
+}
+
+.carousel-control.right,
+.carousel-control.left {
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* ===== 본문 영역 ===== */
+.cat-wrap, .cat-inner > a {
+    border: 1px solid #d2d2d2;
+}
+
+.cat-wrap, .cat-inner {
+    padding: 5px;
+}
+
+.cat-inner > a {
+    display: block;
+    text-align: center;
+    position: relative;
+}
+
+.cat-inner > a > .arrow {
+    display: block;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    background-color: #ccc;
+    opacity: 0.8;
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.cat-inner > a > .hover {
+    width: 100px;
+    background-color: #037fc3;
+    opacity: 0;/* 0이면 투명, 1이면 기본*/
+}
+
+.cat-inner > a:hover > .arrow {
+    opacity: 0;
+}
+
+.cat-inner > a:hover > .hover {
+    opacity: 1;
+}
+
+.cat-inner > a:hover {
+    border: 1px solid #037fc3;
+}
+
+
+/* 블로그 그리드 레이아웃 */
+@media(min-width:1200px){
+    .blog-style > li[class*="col-lg-2"] {
+        width: 20%;
+    }
+}
+
+.blog-style {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.blog-style > li {
+    padding: 0 15px;
+    margin-bottom: 30px;
+}
+
+.blog-inner {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #d2d2d2;
+    position: relative;
+}
+
+.blog-inner .blog-content {
+    padding : 15px 12px;
+}
+
+.blog-inner .blog-content p {
+    min-height: 60px;
+    height: 60px;
+    line-height: 20px;
+    text-overflow: ellipsis;
+}
+
+.blog-inner .blog-info {
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.blog-inner .blog-info ul {
+    float: left;
+}
+
+.blog-inner .blog-info ul li {
+    float: left;
+    /* display : inline-block도 가능 */
+    color: #FDCC11;
+}
+
+.blog-inner .blog-info strong {
+    float: right;
+}
+
+.blog-inner .blog-hover-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+}
+
+.blog-inner .blog-hover-content a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.blog-inner .blog-hover-content:hover {
+    opacity: 1;
+}
+

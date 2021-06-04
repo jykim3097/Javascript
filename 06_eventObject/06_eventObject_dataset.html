@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트객체의 데이터셋(데이터집합)</title>
+</head>
+<body>
+    
+    <ul class="nameList">
+        <li><a href="#" data-info='{"id": "kkk", "age": "20"}'>홍길동</a></li>
+        <li><a href="#" data-info='{"id": "aaa", "age": "30"}'>이순신</a></li>
+        <li><a href="#" data-info='{"id": "bbb", "age": "40"}'>홍길자</a></li>
+        <li><a href="#" data-info='{"id": "ccc", "age": "50"}'>박찬호</a></li>
+    </ul>
+
+    <script>
+        var nameList = document.querySelector(".nameList");
+        nameList.onclick = function() {
+            event.preventDefault(); // a 기본 이벤트를 중단
+            
+            if(event.target.tagName != "A") return; //a가 아니라면 종료
+
+            //사용자 이름은 약속된 형식으로 가져오게 되어있음
+            // console.log(event.target.data-info); //에러
+            //console.dir(event.target);
+
+            // data-xx로 저장한 속성은 dataset의 xx값으로 저장된다.
+            console.log(event.target.dataset.info);
+            var data = JSON.parse(event.target.dataset.info);
+            console.log(data);
+        }
+    </script>
+
+</body>
+</html>

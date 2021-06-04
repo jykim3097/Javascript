@@ -541,6 +541,9 @@ var body = document.body;
 	* 자식에서만 동작하게끔 코드를 잘 작성해야한다
 * target : 클릭한 위치 - 자식
 * currentTarget : 실제 이벤트가 적용된(걸려있는) 위치 - 부모
+* preventDefault() : 고유 이벤트를 가진 태그의 이벤트 제거
+	* a, submit 등과 같이 기본 이벤트를 가진 태그
+	* 예) a - 다른 페이지로 넘어가는 이벤트를 막는다
 * 면접 질문에서 나올 수 있음! - 남한테 설명할 수 있을 정도로 알아두자
 
 ### 이벤트 위임 원리 - 버블링과 캡처링
@@ -567,3 +570,6 @@ var body = document.body;
 
 ### 코딩 팁!
 * classList에서 className을 찾으려면 인덱스로 접근하지 말고 contains 함수로 접근하라
+
+## BOM
+* DOM을 제외한 여러 객체 - window, location 등

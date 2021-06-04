@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .toggle-menu {display: none;}
+        .active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .toggleList {text-align: center;}
+        .toggleList li {
+            display: inline-block;
+            list-style: none;
+            border: 1px solid #777;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        /* 애니메이션은 @keyframe 속성으로 선언, animation 속성에서 사용합니다 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                margin-left: -50%;
+            } to {
+                opacity: 1;
+                margin-left: 0;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div>
+        <ul class="toggleList">
+            <li data-id="#toggle1">메뉴1</li>
+            <li data-id="#toggle2">메뉴2</li>
+            <li data-id="#toggle3">메뉴3</li>
+        </ul>
+    </div>
+
+    <div>
+        <div class="toggle-menu active" id="toggle1">내용상세1</div>
+        <div class="toggle-menu" id="toggle2">내용상세2</div>
+        <div class="toggle-menu" id="toggle3">내용상세3</div>
+    </div>
+
+    <script>
+        var toggleList = document.querySelector(".toggleList");
+        var menuList = document.querySelectorAll(".toggle-menu");
+
+        toggleList.onclick = function() {
+            
+            if(event.target.tagName != "LI") return;
+
+            for(var i = 0; i < menuList.length; i++) {
+
+                if(menuList[i].classList.contains("active")){
+                    menuList[i].classList.remove("active");
+                }
+
+                // if("#"+menuList[i].id == event.target.dataset.id) {
+                //     menuList[i].classList.add("active");
+                // }
+            }
+
+            var target = event.target.dataset.id; // #toggleN
+            document.querySelector(target).classList.add("active");
+        }
+    </script>
+</body>
+</html>

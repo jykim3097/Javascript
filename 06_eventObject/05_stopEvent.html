@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 중단</title>
+</head>
+<body>
+    
+    <h3>a태그, submit의 고유 이벤트 중단</h3>
+
+    <div>
+        <ul class="pagination">
+            <li><a href="gitList.board">1</a></li>
+            <li><a href="gitList.board">2</a></li>
+            <li><a href="gitList.board">3</a></li>
+            <li><a href="gitList.board">4</a></li>
+            <li><a href="gitList.board">5</a></li>
+        </ul>
+    </div>
+
+    <script>
+        var pagination = document.querySelector(".pagination");
+        pagination.onclick = function() {
+
+            event.preventDefault(); // 고유 이벤트를 가진 태그의 이벤트 제거ㅡ
+
+            if(event.target.tagName != "A") return; //a태그가 아니라면 중지
+            var page = event.target.innerHTML;
+            console.log(page);
+        }
+    </script>
+
+    <hr>
+
+    <form action="xxx" method="get">
+        <button type="submit" id="sub">submit</button>
+    </form>
+
+    <script>
+        var sub = document.getElementById("sub");
+        sub.onclick = function() {
+            event.preventDefault();
+            alert(1);
+        }
+    </script>
+
+</body>
+</html>
