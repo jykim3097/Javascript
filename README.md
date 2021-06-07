@@ -570,6 +570,43 @@ var body = document.body;
 
 ### 코딩 팁!
 * classList에서 className을 찾으려면 인덱스로 접근하지 말고 contains 함수로 접근하라
+* classList의 함수 contains, remove, add 잘 활용하기!
 
 ## BOM
 * DOM을 제외한 여러 객체 - window, location 등
+
+21.06.04   
+### event 객체
+#### preventDefault()
+* 고유 이벤트를 가진 태그의 이벤트 제거
+* a, submit
+* 한 번 사용하면 모든 태그에 적용된다.
+* event.preventDefault()로 사용
+
+#### 이벤트 객체의 데이터 집합
+```javascript
+<ul class="nameList">
+	<li><a href="#" data-info='{"id": "kkk", "age": "20"}'>홍길동</a></li>
+	<li><a href="#" data-info='{"id": "aaa", "age": "30"}'>이순신</a></li>
+	<li><a href="#" data-info='{"id": "bbb", "age": "40"}'>홍길자</a></li>
+	<li><a href="#" data-info='{"id": "ccc", "age": "50"}'>박찬호</a></li>
+</ul>
+```
+* 위와 같은 코드에서 일반적인 방식으로 data-info에 접근하면 에러가 발생한다
+	* 일반적인 방식 : event.target.data-info
+	* 우선 js는 '-'를 인식할 수 없기 때문에 사용상 에러가 발생한다
+* 그래서 이는 가져오는 약속된 방법이 있다
+* event 객체의 dir을 검색해보면 이 값은 dataset에 저장되어 있다
+* 그래서 이 객체에 접근하기 위해서는 **event.target.dataset.info**를 통해 접근해야 한다
+
+### 애니메이션 효과
+* @keyframs로 선언하고 animaition 속성으로 사용한다
+```html5
+@keyframs (애니메이션 이름) {
+	from {
+		// 적용할 효과 시작
+	} to {
+		// 적용할 효과 끝
+	}
+}
+```
