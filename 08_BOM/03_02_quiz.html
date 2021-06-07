@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            color: #ffffff;
+            background-color: black;
+            border-radius: 5px;
+        }
+
+        .bgImg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            animation: fadeOut 1s ease-in-out;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 0;
+            } to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+
+</head>
+<body data-img='{"1":"img/1.jpg", "2":"img/2.jpg", "3":"img/3.jpg", "4":"img/4.jpg"}'>
+    
+    <!-- <img src="img/1.jpg" class="bgImg"> -->
+
+    <div>
+        <h2></h2>
+    </div>
+
+    <!-- 
+        1. body 아래에 있는 데이터 셋을 이용해서 10초마다 배경을 바꾸는 작업
+        2. 타이머 아래에 1초마다 현재시간을 바꾸는 작업
+     -->
+
+     <script>
+        // 타이머
+        var h2 = document.querySelector("h2");
+        
+        function changeTime() {
+
+            // 안에서 선언해야 계속 바뀐다!!
+            var date = new Date();
+            var hour = date.getHours();
+            var min = date.getMinutes();
+            var sec = date.getSeconds();
+
+            h2.innerHTML = (hour < 10 ? "0" + hour : hour) +":" + 
+                            (min<10 ? "0"+min : min) + ":" + 
+                            (sec<10? "0"+sec:sec);
+        }
+        
+        //  배경화면 전환
+        var body = document.body;
+        var imgs = JSON.parse(body.dataset.img);
+        var len = Object.keys(imgs).length;
+        
+        var flag = false;
+        var n = 0;
+        function changeImg() {
+            if(flag) {
+                var preImg = document.querySelector("img");
+                preImg.remove();
+            }
+            
+            var img = document.createElement("img");
+            img.src = imgs[++n]; // 자동형변환
+            img.classList.add("bgImg");
+            
+            body.appendChild(img);
+            
+            if(n == Object.keys(imgs).length) n = 0;
+            flag = true;
+        }
+        
+        (function(){
+            changeTime(); // interval이 1초 뒤에 실행되기 때문에
+            setInterval(changeTime, 1000);
+            
+            changeImg();
+            if(n == 1) flag = false;
+            setInterval(changeImg, 10000);
+        })();
+     </script>
+
+</body>
+</html>

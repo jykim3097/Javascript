@@ -610,3 +610,29 @@ var body = document.body;
 	}
 }
 ```
+
+21.06.07   
+## BOM
+### window객체
+* window.open() : 팝업 창(새로운 창)을 띄울 수 있다
+* window.close() : 팝업 창을 띄우고 현재창을 닫는다
+* setTimeout()과 clearTimeout()
+* setInterval()과 claearInterval()
+
+## 코딩 팁!
+* 배경이미지 꽉 차게 설정하는 법
+```javascript
+<style>
+	.bgimg {
+		position : absolute;
+		left : 0;
+		top : 0;
+		width : 100%;
+		height : 100%;
+	}
+</style>
+
+<body>
+	<img src="img/1.jpg">
+</body>
+```

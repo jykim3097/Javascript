@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button type="button" class="stopInterval">인터벌 중지</button>
+
+    <script>
+        // 일정 시간마다 반복 실행 - (실행 함수, 인터벌 시간)
+        // interval() 과 같이 함수에 ()를 붙여서 작성하면 
+        // 함수의 반환을 넣는다는 말이 되므로 주의한다
+        
+        // setInterval(interval, 5000);
+
+        // var i = 0;
+        // function interval() {
+        //     console.log(++i);
+        // }
+
+        // 위 내용을 익명함수로 작성할 수 있다
+        var i = 0;
+        var stop = setInterval ( function() {
+            console.log(++i);
+        }, 1000);
+
+        var stopInterval = document.querySelector(".stopInterval");
+        stopInterval.onclick = function() {
+            
+            // window는 생략 가능
+            // clearInterval(중지할 인터벌 함수)
+            clearInterval(stop);
+        }
+    </script>
+
+</body>
+</html>

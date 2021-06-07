@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM - window</title>
+</head>
+<body>
+    
+    <button type="button" class="popup">새 창 열기</button>
+
+    <script>
+        var popup = document.querySelector(".popup");
+        popup.onclick = function() {
+
+            // 아무 옵션 없이 사용 가능
+            // window.open("https://www.naver.com");
+
+            // 옵션을 넣어 사용, 문자열로 작성
+            // window.open("https://www.naver.com", "네이버 창", "width=300, height=300, left=100, top=100");
+
+            // 폴더에 들어있는 html 파일 열기
+            window.open("../07_DOM/form_join.html", "팝업창", "width=500, height=500, left=100;");
+
+            // 팝업창을 띄우고 현재 창을 끄는 기능
+            window.close();
+        }
+    </script>
+
+</body>
+</html>

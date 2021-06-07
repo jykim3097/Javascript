@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h3>시간을 선택하세요</h3>
+
+    <div class="selTab"></div>
+
+    <h1>00:00:00</h1>
+
+    <script>
+        var selTab = document.querySelector(".selTab");
+
+        // hour select
+        var hourSel = document.createElement("select");
+        for(var i = 0; i<100; i++){
+            var option = document.createElement("option");
+            var text = document.createTextNode(i<10 ? "0"+i : i);
+
+            option.appendChild(text);
+            hourSel.appendChild(option);
+        }
+
+        selTab.appendChild(hourSel);
+
+        // min select
+        var minSel = document.createElement("select");
+        for(var i = 0; i<61; i++){
+            var option = document.createElement("option");
+            var text = document.createTextNode(i<10 ? "0"+i : i);
+            
+            option.appendChild(text);
+            minSel.appendChild(option);
+        }
+        
+        selTab.appendChild(minSel);
+
+        // second select
+        var secSel = document.createElement("select");
+        for(var i = 0; i<61; i++){
+            var option = document.createElement("option");
+            var text = document.createTextNode(i<10 ? "0"+i : i);
+
+            option.appendChild(text);
+            secSel.appendChild(option);
+        }
+
+        selTab.appendChild(secSel);
+
+        //시간 설정 버튼
+        var setTime = document.createElement("button");
+        setTime.innerHTML = "시간설정";
+
+        selTab.appendChild(setTime);
+
+        // 타이머 시작 버튼
+        var start = document.createElement("button");
+        start.innerHTML = "타이머시작";
+        start.className = "start";
+
+        selTab.appendChild(start);
+
+
+        // 시간 객체 생성
+        function Time(hour, min, sec) {
+            this.hour = hour;
+            this.min = min;
+            this.sec = sec;
+        }
+        
+        function getterTime() {
+            var hour = hourSel.value;
+            var min = minSel.value;
+            var sec = secSel.value;
+            
+            var time = new Time(hour, min, sec);
+            time.hour = hour;
+            time.min = min;
+            time.sec = sec;
+            
+            return time;
+        }
+
+        
+        // 시간 설정
+        var h1 = document.querySelector("h1");
+        setTime.addEventListener('click', setTimeFunc);
+
+        function setTimeFunc() {
+            var time = getterTime();
+            h1.innerHTML = time.hour + ":" + time.min + ":" + time.sec;
+
+        }
+
+        // 타이머 시작
+        start.onclick = function() {
+
+            var time = getterTime();
+            var sec = parseInt(time.sec);
+            var min = parseInt(time.min);
+            var hour = parseInt(time.hour);
+
+            if(event.target.innerHTML == "타이머시작") {
+                event.target.innerHTML = "일시정지";
+
+                var stop = setInterval(function() {
+                    console.log(hour, min, sec);
+                    if(hour == 0 && min == 0 && sec == 0) {
+                        document.querySelector(".start").innerHTML = "타이머시작";
+                        clearInterval(stop);
+                    }
+                    else if(sec == 0 && min > 0) {
+                        min--;
+                        sec = 60;
+                    } else {
+                        sec--;
+                        h1.innerHTML = time.hour + ":" + (min<10 ? "0"+min:min) + ":" + (sec<10 ? "0"+sec:sec);
+                    }
+    
+                }, 1000);
+            } else {
+                event.target.innerHTML = "타이머시작";
+                clearInterval(stop);
+            }
+        }
+        
+    </script>
+</body>
+</html>

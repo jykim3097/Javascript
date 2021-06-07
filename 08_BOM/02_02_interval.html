@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .bgImg {
+            animation: fadeIn 0.5s linear; /* linear : 일정한 속도 */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            } to {
+                opacity: 1;
+            }  
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <img src="img/slide1.jpg" class="bgImg">
+    </div>
+
+    <script>
+        
+        var n = 1;
+
+        function changeImg() {
+            // img를 생성하고 조립
+            var img = document.createElement("img");
+            img.src = "img/slide"+(++n)+".jpg"
+            img.classList.add("bgImg");
+            
+            // 기존이미지 삭제
+            var slide = document.querySelector(".slide");
+            slide.firstElementChild.remove();
+            
+            // 이미지 추가
+            slide.appendChild(img);
+            
+            // n 초기화
+            if(n == 4) n = 0;
+            
+        }
+        
+        // 즉시 실행 함수
+        (function() {
+            setInterval(changeImg, 3000);
+        })();
+    </script>
+
+</body>
+</html>

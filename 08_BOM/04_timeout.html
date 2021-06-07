@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>3초 뒤에 타임 함수가 실행되는데 이 버튼을 누르면 실행되지 않습니다.</h3>
+    <button type="button" class="stopTime">스탑</button>
+
+    <script>
+        // var stop = setTimeout(function() {
+        //     alert("hello world");
+        // }, 3000);
+
+        // var stopTime = document.querySelector(".stopTime");
+        // stopTime.onclick = function() {
+            
+        //     clearTimeout(stop);
+        // }
+
+        // setTimeout의 실행 함수에 매개변수를 주고 싶다면?
+        // setTimeout(test("hello world"), 3000);
+
+        // function test(text) {
+        //     return function() {
+        //         console.log(text);
+
+        //     }
+        // }
+
+        (function(text) {
+            setTimeout(function() {
+                console.log(text);
+            }, 3000);
+        })('hello world!');
+
+        for(var i =1; i<=4; i++){
+            (function(i) {
+                setTimeout(function(){
+                    alert(i);
+                }, 1000)
+            })(i);
+        }
+    </script>
+</body>
+</html>

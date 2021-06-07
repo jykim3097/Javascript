@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .main-banner {
+            background: linear-gradient(90deg,#0c151c 1.3125rem,transparent 1%) 50%,linear-gradient(#0c151c 1.3125rem,transparent 1%) 50%,#263747;
+            background-size: 1.5rem 1.5rem;
+            padding: 6rem 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .main-banner img {
+            display: none;
+            animation : fadeDown 0.5s ease-in-out;
+            position: relative; /* 내 위치 기반으로 */
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                /* transform: translateY(-20px); */
+                top: -50px;
+            } to {
+                opacity: 1;
+                /* transform: translateY(0); */
+                top: 0px
+            }
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="main-banner">
+        <img src="img/1.jpg" width="200">
+        <img src="img/2.jpg" width="200">
+        <img src="img/3.jpg" width="200">
+        <img src="img/4.jpg" width="200">
+    </div>
+
+    <script>
+
+        var n = 0;
+        
+        var imgList = document.querySelectorAll("img");
+        function dropImg() {
+            imgList[n].style.display = "inline";
+            n++;
+
+            if(n == imgList.length) clearInterval(stop);
+        }        
+
+        (function() {
+            var stop = setInterval(dropImg, 700);
+        })();
+        
+    </script>
+</body>
+</html>
