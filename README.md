@@ -720,6 +720,9 @@ date.getFullYear(); //년
 	* 거절 reject
 
 21.06.09   
+* 데이터 형식이 기준 형식이 없다면 읽어올 수 없기 때문에 정형화된 데이터가 필요하다
+* 그 형식 중 대표적인 것이 xml과 json이다
+
 #### 읽어보기
 * https://developer.mozilla.org/ko/docs/Web/API/Fetch_API
    

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>서울시 강남구 공공wifi 위치정보 xml로 얻어오기</h2>
+
+    <script>
+        function getFetch() {
+            var url = "http://openapi.seoul.go.kr:8088/5943747878776c643130324448467443/xml/TbPublicWifiInfo_GN/1/1000/";
+            fetch(url).then(function(response) {
+                return response.text(); //문서 자체를 문자열로 받아옴
+            })
+            .then(function(text) {
+                // text 문서를 xml 문서로 변경
+                // DOMParser() 객체 이용
+
+                // var dom = new DOMParser();
+                // var result = dom.parseFromString(text, "text/xml"); // 파싱할 문자열, 파싱할 형태
+                // console.log(result);
+
+                return new DOMParser().parseFromString(text, "text/xml");
+            })
+            .then(function (data) {
+                var list = data.querySelectorAll("row");
+
+                for(var i=0; i<list.length; i++) {
+                    console.log(list[i].querySelector("X_SWIFI_ADRES1").innerHTML);
+                    console.log(list[i].querySelector("X_SWIFI_ADRES2").innerHTML);
+                    console.log(list[i].querySelector("LAT").innerHTML);
+                    console.log(list[i].querySelector("LNT").innerHTML);
+
+                }
+            })
+        }
+
+        (function() {
+            getFetch();
+        })();
+    </script>
+</body>
+</html>

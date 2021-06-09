@@ -42,24 +42,32 @@
 
             // 3. response 안에 text() 함수는 응답 데이터를 문자열의 형식으로 바꾸는 결과
             //    이 결과는 다시 promise이기 때문에 then을 이용해 결과를 받을 수 있다
-            fetch("hi.txt").then(function(response) {
-                // console.log(response.text());
-                response.text().then(function(text) {
-                    console.log(text);
-                });
-            });
+            // fetch("hi.txt").then(function(response) {
+            //     // console.log(response.text());
+            //     response.text().then(function(text) {
+            //         console.log(text);
+            //     });
+            // });
 
             // 4. 비동기 함수는 순서대로 실행되지 않는다. 1보다 2가 먼저 뜬다
             //    순차적으로 실행되면 fetch가 오래 걸리므로 2가 늦게 실행되기 때문에
             //    기다리지 않고 먼저 넘어간다 
             //    비동기를 여러개 생성하려면 코드 작성 능력이 향상되어야 한다!
-            fetch("hi.txt").then(func1);
+            // fetch("hi.txt").then(func1);
 
-            function func1(response) {
-                console.log(1);
-            }
+            // function func1(response) {
+            //     console.log(1);
+            // }
 
-            console.log(2);
+            // console.log(2);
+
+
+            fetch("hi.txt").then(function(response) {
+                // console.log(response); // proto에서 json, text, formData의 형태로!
+                response.text().then(function(text) {
+                    console.log(text);
+                })
+            })
         }
 
     </script>
