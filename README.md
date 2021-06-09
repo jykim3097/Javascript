@@ -598,6 +598,7 @@ var body = document.body;
 * 그래서 이는 가져오는 약속된 방법이 있다
 * event 객체의 dir을 검색해보면 이 값은 dataset에 저장되어 있다
 * 그래서 이 객체에 접근하기 위해서는 **event.target.dataset.info**를 통해 접근해야 한다
+	* 데이터셋의 이름이 data-xxx 이면 접근 코드는 event.target.dataset.xxx 가 된다
 
 ### 애니메이션 효과
 * @keyframs로 선언하고 animaition 속성으로 사용한다
@@ -610,6 +611,12 @@ var body = document.body;
 	}
 }
 ```
+
+### 날짜 객체
+* 날짜 생성 방법 > var date = new Date();
+	* 요일 월 일 연도 현재시간(시간:분:초) 순으로 표시된다
+* 생성 시 날짜를 매개변수로 넣으면(20xx-xx-xx 형식) **그 날짜의 9시**로 초기화된 날짜 객체가 생성된다
+	* 시간도 넣으면 초기화된다 (20xx-xx-xx xx:xx:xx 형식)
 
 21.06.07   
 ## BOM
