@@ -684,11 +684,12 @@ var body = document.body;
 * 매우 보편화된 기술
 * 웹페이지의 이동없이 필요한 데이터만 전송하는 기술 
 * 어디로? 어딘가에 만들어져있는 서버
-* http xml request 객체
-* jquery
-* 액시오스
-* **fetch api**
-	* 최신 기술, ES6
+* ajax api, 라이브러리
+	* jquery의 ajax 라이브러리
+	* 액시오스(라이브러리)
+	* http xml request object(api)
+	* **fetch api**
+		* 최신 기술, ES6
 
 * 지금까지 사용한 건 동기적(순차적) 기술
 * 함수가 호출이 되면 그 함수가 끝나기 전까지 다음 함수가 시작되지 않음
@@ -709,3 +710,9 @@ var body = document.body;
 	* 수행 pending
 	* 성공 fulfilled
 	* 거절 reject
+
+21.06.09   
+#### 읽어보기
+* https://developer.mozilla.org/ko/docs/Web/API/Fetch_API
+   
+
