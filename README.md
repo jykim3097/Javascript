@@ -615,8 +615,16 @@ var body = document.body;
 ### 날짜 객체
 * 날짜 생성 방법 > var date = new Date();
 	* 요일 월 일 연도 현재시간(시간:분:초) 순으로 표시된다
-* 생성 시 날짜를 매개변수로 넣으면(20xx-xx-xx 형식) **그 날짜의 9시**로 초기화된 날짜 객체가 생성된다
+* 생성 시 날짜를 문자열 매개변수로 넣으면(20xx-xx-xx 형식) **그 날짜의 9시**로 초기화된 날짜 객체가 생성된다
 	* 시간도 넣으면 초기화된다 (20xx-xx-xx xx:xx:xx 형식)
+```javascript
+var date = new Date();
+var date2 = new Date("2021-06-04");
+var date3 = new Date("2021-06-04 16:20:15");
+
+// 년, 월, 일, 시, 분, 초를 각각 숫자 타입으로 얻는 방법
+date.getFullYear(); //년
+```
 
 21.06.07   
 ## BOM
