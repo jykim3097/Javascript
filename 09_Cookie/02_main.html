@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="02_popup.js"></script>
+</head>
+<body>
+    
+    <h2>메인 페이지</h2>
+
+    <!-- 
+        1. 페이지가 로드된 이후에 팝업창을 띄워준다.
+        1-1. 쿠키가 존재하면 팝업을 띄우지 않는다
+        2. '오늘 하루 창을 열지 않기'를 클릭 시 1일 유지되는 쿠키를 생성한다
+     -->
+
+    <script>
+        window.onload = function() {
+            if(!getCookie("popup")) 
+                window.open("02_popup.html", "팝업창", "width=500, height=500");
+        }
+    </script>
+
+</body>
+</html>

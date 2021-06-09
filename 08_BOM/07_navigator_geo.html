@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+    //     console.log(navigator);
+    //     navigator.geolocation.getCurrentPosition(function(postion) {
+    //         console.log(postion);
+    //     }, function(error) {
+    //         // console.log("실패");
+    //         alert("정보를 얻지 못했습니다");
+    //         console.log(error);
+    //     });
+    
+    // 성공 시 실행할 콜백 함수
+    function success(postion) {
+        console.log("접근 시각 : ", postion.timestamp);
+        console.log("위도 : " + postion.coords.latitude);
+        console.log("경도 : " + postion.coords.longitude);
+    }
+
+    // 실패 시 실행할 콜백 함수
+    function fail(error) {
+        alert("정보를 얻지 못했습니다");
+        console.log(error);    
+    }
+
+    // 사용자의 좌표정보를 얻어오는 geolocation
+    (function() {
+        navigator.geolocation.getCurrentPosition(success, fail);
+    })();
+
+    </script>
+
+
+</body>
+</html>

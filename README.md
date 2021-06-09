@@ -616,8 +616,16 @@ var body = document.body;
 ### window객체
 * window.open() : 팝업 창(새로운 창)을 띄울 수 있다
 * window.close() : 팝업 창을 띄우고 현재창을 닫는다
-* setTimeout()과 clearTimeout()
 * setInterval()과 claearInterval()
+* setTimeout()과 clearTimeout()
+
+### setInterval()과 claearInterval()
+* setInterval() : 일정 시간마다 함수 반복 실행
+* claearInterval() : setInterval 중지 함수
+
+### setTimeout()과 clearTimeout()
+* setTimeout() : 일정 시간 지난 후 함수 실행
+* clearTimeout() : setTimeout() 중지 함수
 
 ## 코딩 팁!
 * 배경이미지 꽉 차게 설정하는 법
@@ -636,3 +644,61 @@ var body = document.body;
 	<img src="img/1.jpg">
 </body>
 ```
+
+21.06.08   
+### location 객체
+* href()
+* reload()
+	* 자주 사용하지 않는다
+	* 함부로 사용하면 안된다
+
+### history 객체
+* 인터넷에서 history는 기록
+* history.forword : n만큼 이전으로 간다
+* history.go(n) : n만큼 기록을 이동한다
+	* 음수를 사용하면 이전으로 갈 수 있다
+* history.replaceState
+	* 상태를 교체하다
+	* 페이지를 조작할 수 있다
+	* 중간에 넘어온 데이터(페이지) 등을 삭제하거나 변경할 수 있다
+
+### navigator 객체
+* appName() : 브라우저 이름을 얻어온다
+	* 어떤 브라우저나, 어디서 브라우저에 접속했는지 알려준다
+	* 크로스 브라우징을 위한 기본적인 동작
+	* Netscape라고 보통 뜰 것
+	* webkit이라고 써있는 건 css 렌더링 엔진(css 해석기)
+* geolocation
+	* callback 함수 : 허용, 차단에 대한 결과를 반환 받을 수 있는 함수를 매개변수로 넣어준다
+		* 값(허용/차단)이 넘어올 때까지 기다린다
+		* 그런데 무한정 대기할 수 없기 때문에
+
+## 자바스크립트 비동기 ajax
+* 매우 보편화된 기술
+* 웹페이지의 이동없이 필요한 데이터만 전송하는 기술 
+* 어디로? 어딘가에 만들어져있는 서버
+* http xml request 객체
+* jquery
+* 액시오스
+* **fetch api**
+	* 최신 기술, ES6
+
+* 지금까지 사용한 건 동기적(순차적) 기술
+* 함수가 호출이 되면 그 함수가 끝나기 전까지 다음 함수가 시작되지 않음
+
+### fetch api
+* 콜백함수
+	* then() 안에 콜백함수를 작성하면 완료가 되면 fetch의 실행결과를 담아둔다
+	* 콜백함수 : 얼마가 걸릴 지 모르니까 성공 시에 결과를 돌려받을 함수
+
+* api
+	* 기능을 사용하는 **방법**이 정의된 문서
+	* vs 라이브러리 : 만들어져있는 기능
+
+* 서버 상태로 두어야 비동기 과정이 돌아간다
+* fetch는 내장 객체
+* 비동기 구문은 실행하면 결과가 언제 올 지 모르기 때문에 내장 객체에 담는다
+* 세가지 상태가 있다
+	* 수행 pending
+	* 성공 fulfilled
+	* 거절 reject

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        console.dir(navigator);
+        // console.log(navigator.appName);
+        // console.log(navigator.appVersion);
+        console.log(navigator.userAgent);
+
+        // 브라우저 판별
+        var browser = navigator.userAgent.toLowerCase();
+
+        // 값이 있으면 index를 없으면 -1을 반환
+        console.log(browser.indexOf("windows"));
+
+        if(browser.indexOf("android") != -1) {
+            console.log("안드로이드");
+        } else if (browser.indexOf("iphone") != -1) {
+            console.log("아이폰");
+        } else if (browser.indexOf("edg") != -1 ) {
+            console.log("엣지");
+        } else if (browser.indexOf("chrome") != -1) {
+            console.log("크롬");
+        } else if (browser.indexOf("firefox") != -1) {
+            console.log("파이어폭스");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        쿠키이름 : <input type="text" id="cookieName"><br>
+        쿠키값 : <input type="text" id="cookieValue"><br>
+        <button type="button" id="cookieMake">쿠키생성</button>
+    </div>
+    <hr>
+    <div>
+        찾을 쿠키 이름 : <input type="text" id="cookieFind"><br>
+        <button type="button" id="cookieGet">쿠키확인</button>
+    </div>
+
+    <script>
+        document.getElementById("cookieMake").addEventListener('click', createCookie);
+
+        function createCookie() {
+            var name = document.getElementById("cookieName").value;
+            var value = document.getElementById("cookieValue").value;
+
+            // 쿠키 시간 - 날짜 객체 이용
+            var date = new Date();
+            date.setDate(date.getDate() + 1); // 오늘 날짜 + 1
+
+            // 쿠키는 문자열의 형태로 만들어진다
+            var cookie = "";
+            cookie += name + "=" + value + ";"; // 키 = 값 형식
+            cookie += "expires=" + date;
+
+            // 쿠키는 document.cookie 저장, 이름이 같으면 덮어쓴다
+            document.cookie = cookie;
+        }
+
+        // 쿠키 찾기 기능
+        document.getElementById("cookieGet").addEventListener('click', getCookie);
+
+        function getCookie() {
+            var find = document.getElementById("cookieFind").value; // 찾을 쿠키 이름
+            var cookies = document.cookie.split(";");
+            console.log(find, cookies);
+
+            for(var i in cookies) {
+                if(cookies[i].indexOf(find) != -1){
+                    
+                    // 치환
+                    var cookie = cookies[i].replace(" ", "").replace(find+"=", "");
+                    console.log(cookie);
+
+                    return; // 함수 종료
+                }
+            }
+            
+        }
+    </script>
+</body>
+</html>
