@@ -13,7 +13,7 @@
         var date = new Date();
         var date2 = new Date("2021-06-04");
         var date3 = new Date("2021-06-04 16:20:15");
-        var date4 = new Date(16227913522755); //밀리초 기준 시
+        var date4 = new Date(1622791352275); //밀리초 기준 시
 
         console.log(date);
         console.log(date2);
@@ -31,33 +31,34 @@
 
         // ex) 1시간 이전 작성은 방금전, 하루 이전 작성은 xx시간전, 하루가 넘어가면 날짜 표기
         // 1622791352275과 갭차이
-        var now = new Date();
-        var nowMillis = now.getTime();
-        var gap = nowMillis - date4;
-        
-        var time;
-        if(gap < 24*60*60*1000) { //1일 이하인 경우
-            if (gap < 60*60**1000){ // 1시간 이전
-            time = "방금 전";
-            } else {
-            time = parseInt(gap/60*60*1000) + "시간 전";
-            }  
-        } else {
-            //1일 이상
-            var today = new Date(date4);
-            var year = today.getFullYear();
-            var month = today.getMonth() + 1;
-            var day = today.getDate();
-            var hour = today.getHours();
-            var min = today.getMinutes();
-            var sec = today.getSeconds();
+        var now = new Date(); // 현재 시간
+        console.log("현재 시간 :", now);
 
-            // 이 작업은 프런트, java, db에서 다 할 수 있다
-            time = year + "년 " + (month < 10 ? "0" + month : month) + "월 " 
-                                + (day < 10 ? "0" + day : day) +"일 " 
-                                + (hour < 10 ? "0" + hour : hour) + "시 " 
-                                + (min < 10 ? "0" + min : min) + "분 " 
-                                + (sec < 10 ? "0" + sec : sec) + "초"
+        var nowMillis = now.getTime(); // 현재 시간을 밀리초로 표현
+        console.log("현재 시간(밀리초) :", nowMillis);
+
+        var pre = new Date(1622791352275);
+        console.log("밀리초 기준 시 :", pre);
+
+        var gap = nowMillis - pre; // 현재 시간과 기준 시의 차이 (밀리초)
+
+        // 하루는 밀리초로 : 24*60*60*1000
+        // 한시간은 : 60*60*2000
+        var time = "";
+        if(gap < 24*60*60*1000) { // 1일 이하인 경우
+            if (gap < 60*60*1000) { // 1시간 이하인 경우
+                time = "방금 전";
+            } else {
+                time = parseInt(gap/60*60*1000) + "시간 전";
+            }
+        } else { // 1일 이상이 되면 연,월,일 순으로 날짜만 뽑아준다
+            var year = pre.getFullYear();
+            var month = pre.getMonth()+1;
+            var day = pre.getDate();
+
+            time = year + "년 " + 
+                    (month < 10 ? "0"+month : month) + "월 " + 
+                    (day < 10 ? "0"+day : day) + "일";
         }
 
         console.log(time);

@@ -624,7 +624,22 @@ var date3 = new Date("2021-06-04 16:20:15");
 
 // 년, 월, 일, 시, 분, 초를 각각 숫자 타입으로 얻는 방법
 date.getFullYear(); //년
+date.getMonth() + 1; // month는 +1을 해줘야한다
+date.getDate();
+date.getHours();
+date.getMinutes();
+date.getSeconds();
+date.getTime(); // 밀리초
 ```
+* 현재 시간을 밀리초로 표현할 수 있다
+```javascript
+var date = new Date();
+date.getTime(); // 현재 시간을 밀리초로 표현
+```
+* 밀리초로 시간 표현하기
+	* 하루 = 24 * 60 * 60 * 1000
+	* 1시간 = 60 * 60 * 1000
+
 
 21.06.07   
 ## BOM
