@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            list-style: none;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 70%;
+            margin-top: 70px;
+            text-align: center;
+        }
+
+        .wrap h2, h3 {
+            padding: 10px;
+        }
+
+        .wrap ul, li {
+            display: inline-block;
+        }
+
+        .wrap li {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 10px;
+            background-color: brown;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="wrap">
+        <h2>서울시 코로나19 확진자 현황</h2>
+        <h3 class="day"></h3>
+        <ul class="dayList">
+            
+        </ul>
+    </div>
+
+    <script>
+        // 화면에 찍기
+        var dayList = document.querySelector(".dayList");
+        var day = document.querySelector(".day");
+        
+        var date = new Date("2021-06-09");
+        pDate = date.getFullYear()+"-0"+(date.getMonth()+1)+"-0"+date.getDate();
+        day.innerHTML = pDate;
+        
+        var gu = {};
+        function getFetch() {
+            var url = "http://openapi.seoul.go.kr:8088/5954684251776c6433366353724173/json/Corona19Status/1/100/";
+            
+            fetch(url)
+            .then(function(response) {
+                if(response.status != 200) {
+                    alert("오류가 발생했습니다. 다시 시도하세요.");
+                    return;
+                } else {
+                    return response.json();
+                }
+            })
+            .then(function(jsonData) {    
+                var list = jsonData.Corona19Status.row;
+                
+                for(var i=0; i<list.length; i++) {
+                    var area = list[i].CORONA19_AREA;
+                    var date = list[i].CORONA19_DATE;
+
+                    if(!(area in gu)) {
+                        gu[area] = 0;
+                        var li = document.createElement("li");
+                        li.className = area;
+                    }
+                    if(date == pDate) {
+                        gu[area]++;
+                    }
+                    dayList.appendChild(li);
+                }
+
+                var liList = document.querySelectorAll("li");
+                for(var i=0; i<liList.length; i++) {
+                    liList[i].innerHTML = liList[i].className + " " + gu[liList[i].className];
+                    if(gu[liList[i].className] < 3) {
+                        liList[i].style.backgroundColor = "rgba(165, 42, 42, 0.3)";
+                    } else if(gu[liList[i].className] < 5) {
+                        liList[i].style.backgroundColor = "rgba(165, 42, 42, 0.5)";
+                    } else if (gu[liList[i].className] < 10) {
+                        liList[i].style.backgroundColor = "rgba(165, 42, 42, 0.7)";
+                    } else {
+                        liList[i].style.backgroundColor = "rgba(165, 42, 42, 0.9)";
+                    }
+                }
+            })
+        }
+
+        (function(){
+            getFetch();
+        })();
+
+    </script>
+</body>
+</html>

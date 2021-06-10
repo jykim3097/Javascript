@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button type="button" onclick="ajax();">ajax요청</button>
+
+    <script>
+
+        function ajax() {
+
+            // fetch("hi.txt").then(function(response) {
+            //     response.text().then(function(a) {
+            //         console.log(a);
+            //     });
+            // });
+
+            // 1. 호출하면 호출구문이 오랜시간이 걸릴 수 있기 때문에, promise라는 내장 객체를 반환한다
+            // promise는 fetch를 사용했을 때, 상태 결과를 반환해주는 약속된 객체다  
+            // - pending : 수행중(보류)
+            // - fulfilled : 성공
+            // - reject : 거절
+
+            // var promise = fetch("hi.txt");
+            // promise.then(function() {});
+
+            // 2.then 함수는 콜백함수를 담아서 결과를 반환받는 함수
+            // 콜백함수의 첫번째 매개변수 response를 담는다
+            // response 안에는 성공, 실패, url, 데이터에 대한 정보 등 많은 내용이 담겨있다
+
+            // fetch("hi.txt").then(function(response) {
+            //     console.log(response);
+            //     if(response.status != 200) {
+            //         return;
+            //     }
+            // });
+
+            // 3. response 안에 text() 함수는 응답 데이터를 문자열의 형식으로 바꾸는 결과
+            //    이 결과는 다시 promise이기 때문에 then을 이용해 결과를 받을 수 있다
+            // fetch("hi.txt").then(function(response) {
+            //     // console.log(response.text());
+            //     response.text().then(function(text) {
+            //         console.log(text);
+            //     });
+            // });
+
+            // 4. 비동기 함수는 순서대로 실행되지 않는다. 1보다 2가 먼저 뜬다
+            //    순차적으로 실행되면 fetch가 오래 걸리므로 2가 늦게 실행되기 때문에
+            //    기다리지 않고 먼저 넘어간다 
+            //    비동기를 여러개 생성하려면 코드 작성 능력이 향상되어야 한다!
+            // fetch("hi.txt").then(func1);
+
+            // function func1(response) {
+            //     console.log(1);
+            // }
+
+            // console.log(2);
+
+
+            fetch("hi.txt").then(function(response) {
+                // console.log(response); // proto에서 json, text, formData의 형태로!
+                response.text().then(function(text) {
+                    console.log(text);
+                })
+            })
+        }
+
+    </script>
+</body>
+</html>

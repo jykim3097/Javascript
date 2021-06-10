@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="userId"></div>
+    <div class="userName"></div>
+
+    <button type="button" onclick="ajax();">ajax 요청</button>
+
+    <script>
+        function ajax() {
+
+            // text() - 문서 형태로 변환
+            // json() - 객체 형태로 변환
+
+            // fetch("hi.json").then(function(response) {
+            //     // console.log(response);
+
+            //     response.json().then(function(data) {
+            //         // console.log(data);
+
+            //         document.querySelector(".userId").innerHTML = data.userId;
+            //         document.querySelector(".userName").innerHTML = data.userName;
+            //     });
+            // });
+
+            // 이런 식으로 작성하길 권장
+            fetch("hi.json")
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    document.querySelector(".userId").innerHTML = data.userId;
+                    document.querySelector(".userName").innerHTML = data.userName;
+                })
+        }
+    </script>
+</body>
+</html>

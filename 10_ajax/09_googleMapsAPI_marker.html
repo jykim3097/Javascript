@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #map {
+            margin: 0 auto;
+            width: 50%;
+            height: 50%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>서울시 공공 wifi 위치 정보</h2>
+    <div id="map"></div>
+    <script>
+
+        var myPosition = { lat: "", lng: "" }; // 객체
+
+        function getFetch() { // (3)
+
+            // 서울시 공공 wifi 위치정보 받아오기
+            fetch("http://openapi.seoul.go.kr:8088/KEY/json/TbPublicWifiInfo_GN/1/1000/")
+                .then(function (response) {
+                    if (response.status != 200) {
+                        alert("서버에서 문제가 발생했습니다.");
+                        return;
+                    } else {
+                        return response.json();
+                    }
+                })
+                .then(function (jsonData) {
+                    // console.log(jsonData);
+                    var data = jsonData.TbPublicWifiInfo_GN.row;
+                    console.log(data);
+
+                    // console.log(data[0].LAT);
+                    // console.log(data[0].LNT);
+                    // console.log(data[0].X_WSWIFI_ADRES1); // 기본 주소
+                    // console.log(data[0].X_WSWIFI_ADRES2); // 상세 주소
+
+                    // 2. 구글 맵 생성
+                    const map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 13,
+                        center: myPosition,
+                    });
+
+                    for(var i = 0; i < data.length; i++){
+
+                        // 위도, 경도
+                        const myLatLng = { lat: parseFloat(data[i].LNT), lng: parseFloat(data[i].LAT) };
+                        
+                        // 3. 마커 생성
+                        new google.maps.Marker({
+                            position: myLatLng,
+                            map,
+                            title: data[i].X_SWIFI_ADRES1 + '\n' +
+                                    data[i].X_SWIFI_ADRES2,
+                        });
+                    }
+                })
+
+
+        }
+
+        // 위치 정보 성공 시 실행할 함수 (2)
+        function success(position) {
+            myPosition.lat = position.coords.latitude;
+            myPosition.lng = position.coords.longitude;
+            // console.log(myPosition.lat, myPosition.lng);
+
+            getFetch(); // 비동기 함수 호출
+        }
+
+        // 위치 정보 실패 시 실행할 함수
+        function fail() {
+            alert("팝업창을 해제하고 위치 정보를 확인하세요");
+        }
+
+        // 1. 구글 맵 시작 (1)
+        function initMap() {
+
+            // 네비게이터로 현재 위치정보를 받는다
+            navigator.geolocation.getCurrentPosition(success, fail); // 비동기
+        }
+    </script>
+
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=GOOGLE_MAP_KEY&callback=initMap&libraries=&v=weekly"
+        async></script>
+</body>
+
+</html>
